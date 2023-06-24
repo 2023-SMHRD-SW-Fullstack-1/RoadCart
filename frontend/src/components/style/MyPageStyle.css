@@ -1,0 +1,104 @@
+.MypageContainer {
+    display: flex;
+    flex-direction: column;
+    padding: 200px;
+    height: 500px;
+    width: 500px;
+    margin: auto;
+    text-align: center;
+}
+
+.MyPageBtn {
+    display: block;
+    width: 310px;
+    height: 55px;
+    left: 710px;
+    top: 687px;
+    margin: 10px;
+    font-size: x-large;
+
+    border: none;
+    border-radius: 5px;
+    background-color: black;
+    color: white;
+
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+
+/* ---------- ModifyPage ---------- */
+#nickname {
+    margin: 15px;
+}
+
+#email {
+    margin-top: -10px;
+    margin-bottom: 40px;
+}
+
+#profile {
+    border-radius: 50%;
+    border: solid 2px;
+
+}
+
+#InfoTxt {
+    margin-top: 5px;
+    float: left;
+    text-align: left;
+    padding-left: 5px;
+    /* border-left: 5px solid #87cdff; */
+}
+
+#InfoContainer {
+    text-align: left;
+    /* margin-right: 45%; */
+}
+
+.ModifyPageLabel {
+    margin-right: 10px;
+    font-size: large;
+}
+
+td {
+    padding: 0;
+}
+
+
+.Modifyinput {
+    border: 0;
+    padding: 10px 0 10px 0;
+    border-bottom: 1px solid #B9B9B9;
+    color: #000000;
+    font-size: 20px;
+    margin: 3%;
+    /* padding: 10px;
+    width: 280px;
+    height: 20px;
+    padding-left: 10px; */
+}
+
+#ModifyIdInput {
+    border: none;
+}
+
+.ModifyPageBtn {
+    margin: 5px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 150px;
+    height: 50px;
+    font-size: 20px;
+    color: white;
+}
+
+#ModifyBackBtn {
+    background-color: lightgray;
+}
+
+#ModifyBtn {
+    background-color: black;
+}
