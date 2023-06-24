@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.smhrd.road.mapper.t_PoiMapper">
+	<select id="poiList" resultType="com.smhrd.road.domain.t_poi">
+		select * from t_poi
+	</select>
+
+	<!-- 여행 관심지 등록 -->
+	<insert id="poiRegister"
+		parameterType="com.smhrd.road.domain.t_poi">
+		INSERT INTO t_poi (user_id, poi_dt, poi_category, poi_name,
+		poi_info, poi_addr, lat, lng, poi_img)
+		VALUES (#{user_id}, #{poi_dt}, #{poi_category}, #{poi_name}, 
+		#{poi_info}, #{poi_addr}, #{lat}, #{lng}, #{poi_img})
+	</insert>
+
+	<!-- 여행 관심지 수정 -->
+	<update id="poiUpdate"
+		parameterType="com.smhrd.road.domain.t_poi">
+		UPDATE t_poi
+		SET poi_name = #{poi_name},
+		poi_info = #{poi_info},
+		poi_addr = #{poi_addr},
+		lat = #{lat},
+		lng = #{lng},
+		poi_img = #{poi_img}
+		WHERE poi_idx = #{poi_idx}
+	</update>
+
+	<!-- 여행 관심지 삭제 -->
+	<delete id="poiDelete" parameterType="int">
+		DELETE FROM t_poi
+		WHERE poi_idx = #{poi_idx}
+	</delete>
+</mapper>

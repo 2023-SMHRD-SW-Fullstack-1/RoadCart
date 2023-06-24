@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.smhrd.road.mapper.t_ScheduleMapper">
+
+	<!-- 일정리스트 -->
+	<select id="scheduleList" 
+		resultType="com.smhrd.road.domain.t_schedule">
+		select * from t_schedule where user_id=#{user_id}
+	</select>
+
+	<!-- 일정등록 -->
+	<insert id="scheduleRegister"
+		parameterType="com.smhrd.road.domain.t_schedule">
+		insert into t_schedule (sche_title, sche_content,
+		sche_start_dt, sche_end_dt,user_id)
+		values(#{sche_title},#{sche_content},#{sche_start_dt}, #{sche_end_dt},
+		#{user_id})
+	</insert>
+
+	<!-- 일정수정 -->
+	<update id="scheduleUpdate"
+		parameterType="com.smhrd.road.domain.t_schedule">
+		update t_schedule set
+		sche_title=#{sche_title},sche_content=#{sche_content}
+		sche_start_dt=#{sche_start_dt},sche_end_dt=#{sche_end_dt}
+		where sche_idx=#{sche_idx}
+	</update>
+
+	<!-- 해당날짜 일정조회 -->
+	<select id="scheduleDetail"
+		parameterType="int" resultType="com.smhrd.road.domain.t_poi">
+		SELECT p.poi_idx, p.user_id, 
+			   p.poi_dt, p.poi_category, 
+			   p.poi_name, p.poi_info, 
+			   p.poi_addr, p.lat, p.lng, 
+			   p.poi_img
+		FROM t_poi p, t_schedule s
+		WHERE p.sche_idx = #{sche_idx} AND s.sche_idx = #{sche_idx} 
+		AND p.poi_dt 
+		BETWEEN s.sche_start_dt 
+		AND s.sche_end_dt
+	</select>
+</mapper>
