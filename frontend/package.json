@@ -3,9 +3,11 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@ant-design/icons": "^5.1.4",
     "@emotion/react": "^11.11.1",
     "@emotion/styled": "^11.11.0",
     "@mui/material": "^5.13.5",
+    "@mui/icons-material": "^5.11.16",
     "@react-oauth/google": "^0.11.0",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
@@ -13,6 +15,7 @@
     "axios": "^1.4.0",
     "gapi": "^0.0.3",
     "qs": "^6.11.2",
+    "http-proxy-middleware": "^2.0.6",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-grid-layout": "^1.3.4",
@@ -20,11 +23,12 @@
     "react-naver-login": "^0.1.4",
     "react-router-dom": "^6.12.1",
     "react-scripts": "5.0.1",
-    "react-simple-image-slider": "^2.4.1",
     "react-slick": "^0.29.0",
+    "react-transition-group": "^4.4.5",
     "slick-carousel": "^1.8.1",
     "styled-components": "^6.0.0-rc.5",
-    "web-vitals": "^2.1.4"
+    "web-vitals": "^2.1.4",
+    "homepage":"https://github.com/2023-SMHRD-SW-Fullstack-1/RoadCart.git/project24"
   },
   "scripts": {
     "start": "react-scripts start",
