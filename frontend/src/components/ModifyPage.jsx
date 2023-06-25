@@ -42,7 +42,7 @@ const ModifyPage = ({ isLoggendIn, setIsLoggendIn }) => {
                 alert('이용해주셔서 감사합니다')
                 const requestData = { user_id: user_id };
                 console.log(requestData);
-                axios.post(`http://172.30.1.39:8089/road/delete`, requestData, config)
+                axios.post(`spring/road/delete`, requestData, config)
                     .then((res) => {
                         console.log(res.data);
                         sessionStorage.clear();
@@ -63,7 +63,7 @@ const ModifyPage = ({ isLoggendIn, setIsLoggendIn }) => {
             user_pw: userPw,
         };
         console.log('버튼 클릭했을 때:', requestData);
-        axios.post(`http://172.30.1.39:8089/road/update`, requestData, config)
+        axios.post(`spring/road/update`, requestData, config)
             .then((res) => {
                 console.log(res.data);
                 // sessionStorage.clear();

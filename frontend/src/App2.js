@@ -17,7 +17,7 @@ import Delete from './components/Delete';
 
 function App() {
 
-  const [post , setPost] =useState([]); //게시물 한 개
+  const [post , setPost] =useState(); //게시물 한 개
   const [posts, setPosts] = useState([]); //게시물 전체
   const [like,setLike] = useState(false) //좋아요 true,fale
   const [likedPosts, setLikedPosts] = useState(['a']); //사용자가 좋아요를 누른 게시물의 comm_idx를 저장

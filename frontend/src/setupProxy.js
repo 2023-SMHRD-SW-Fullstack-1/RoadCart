@@ -11,4 +11,14 @@ module.exports = function(app){
         }
       })
   )
+
+  app.use(
+    createProxyMiddleware('/spring', {
+        target: 'http://localhost:8089',
+        changeOrigin: true,
+        pathRewrite: {
+          '^/spring': '' // URL ^/api -> 공백 변경
+      }
+    })
+)
 };

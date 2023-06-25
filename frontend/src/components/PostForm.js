@@ -59,7 +59,6 @@ function PostForm({onAddPost,setPosts,posts,post}) {
         comm_file:[],
         comm_dt:'',
         user_id:''
-        
       };
       
       // setTitle('');
@@ -96,7 +95,7 @@ function PostForm({onAddPost,setPosts,posts,post}) {
        // 화면이 mount되었을 때 백엔드 데이터 보내기
        // FormData의 key 확인
          
-        axios.post(`http://172.30.1.39:8089/road/postform`,formData, config)
+        axios.post(`spring/road/postform`,formData, config)
         .then((res)=>{
           // console.log('결과postform',res.data);
            setPosts(res.data);
@@ -117,13 +116,11 @@ function PostForm({onAddPost,setPosts,posts,post}) {
    
   };
   }
-  
- 
-  
+
   return (
     <div className='postFormContainer'>
       <form encType='multipart/form-data' onSubmit={(e)=>{handleSubmit(e)}}>
-       <TextField style={{width:'1000px'}}
+       <TextField style={{width:'50vw'}}
           id="outlined-multiline-flexible"
           label="제목"
           multiline
@@ -134,7 +131,7 @@ function PostForm({onAddPost,setPosts,posts,post}) {
         />
        
       <br/><br/><br/>
-      <TextField style={{width:'1000px'}}
+      <TextField style={{width:'50vw'}}
           id="outlined-multiline-static"
           label="내용"
           multiline
@@ -150,9 +147,9 @@ function PostForm({onAddPost,setPosts,posts,post}) {
         <Alert severity="warning">정방형 사진만 넣어주세요.</Alert>
        </Stack>
       {images > 0 && 
-       post.community.comm_file.map((post) =>(
+       post.comm_file.map((post) =>(
         <img 
-        key={post.community.comm_idx}src={post.community.comm_idx} alt="미리보기 이미지" name="images" style={{ maxWidth: '20%' }} 
+        key={post.comm_idx}src={post.community.comm_idx} alt="미리보기 이미지" name="images" style={{ maxWidth: '20%' }} 
         />
        ))
         } 
