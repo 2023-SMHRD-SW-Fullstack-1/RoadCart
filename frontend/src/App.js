@@ -4,7 +4,6 @@ import Profile from './components/login/kakao/Profile';
 import AuthKakao from './components/login/kakao/AuthKakao';
 import AuthNaver from './components/login/naver/AuthNaver';
 import LoginPage from './components/LoginPage';
-import Header from './components/Header';
 import Main from './components/Main';
 import MyPage from './components/MyPage';
 import ModifyPage from './components/ModifyPage';
@@ -19,6 +18,8 @@ import PostForm from './components/PostForm';
 import MyPost from './components/MyPost';
 import Update from './components/Update';
 import Container  from '@mui/material/Container';
+import MainLayout from './components/MainLayout';
+import Planner from './components/Planner';
 
 
 
@@ -50,33 +51,34 @@ function App() {
 };
 
   return (
-    <div className='container'>
-      <Header isLoggendIn={isLoggendIn} /><br/>
+    <div className='container' >
+      <br/>
       <Container fixed>
       <Routes>
-        // Header
-        // Main
-        <Route path='/' element={<Main />} />
-        <Route path='/login' element={<LoginPage isLoggendIn={isLoggendIn} setIsLoggendIn={setIsLoggendIn} />} />
-        <Route path='/logout' element={<LogOutPage setIsLoggendIn={setIsLoggendIn} />} />
-        <Route path='/mypage' element={<MyPage />} />
-        <Route path='/myprofile' element={<ModifyPage />} />
-        <Route path='/authkakao' element={<AuthKakao isLoggendIn={isLoggendIn} setIsLoggendIn={setIsLoggendIn} />} />
-        <Route path='/authnaver' element={<AuthNaver isLoggendIn={isLoggendIn} setIsLoggendIn={setIsLoggendIn} />} />
-        <Route path='/profile' element={<Profile />} />
-        <Route path='/googlenick' element={<Google_Nick setIsLoggendIn={setIsLoggendIn} />} />
-        <Route path='/kakaonick' element={<Kakao_Nick setIsLoggendIn={setIsLoggendIn} />} />
-        <Route path='/join' element={<JoinPage setIsLoggendIn={setIsLoggendIn} isLoggendIn={isLoggendIn} />} />
-        <Route path="/post" element={<PostList  posts={posts} setPosts={setPosts}/>}/>
-        <Route path="/post/detail/:comm_idx"  element={<PostDetail posts={posts} 
-          like={like}  likedPosts={likedPosts} setLikedPosts={setLikedPosts} likeCount={likeCount} setLikeCount={setLikeCount}
-          setLike={setLike}/>}/>
-        <Route path="/postform" element={<PostForm onAddPost={handleAddPost} setPosts={setPosts} posts={posts}/>}/>
-        <Route path="/mypost" element = {<MyPost  posts={posts} onEditPost={handleUpdatedPost} 
-        like={like} setLike={setLike} likedPosts={likedPosts} setLikedPosts={setLikedPosts} likeCount={likeCount} setLikeCount={setLikeCount}
-        setPosts={setPosts}/>}/>
-        <Route path="/postupdate/:comm_idx" element={<Update posts={posts} setPosts={setPosts} />}/>
-        {/* <Route path='/slide' element={<SimpleSlider/>}/> */}
+        <Route element={<MainLayout isLoggendIn={isLoggendIn}/>}>
+          <Route path='/' element={<Main />} />
+          <Route path='/login' element={<LoginPage isLoggendIn={isLoggendIn} setIsLoggendIn={setIsLoggendIn} />} />
+          <Route path='/logout' element={<LogOutPage setIsLoggendIn={setIsLoggendIn} />} />
+          <Route path='/mypage' element={<MyPage />} />
+          <Route path='/myprofile' element={<ModifyPage />} />
+          <Route path='/authkakao' element={<AuthKakao isLoggendIn={isLoggendIn} setIsLoggendIn={setIsLoggendIn} />} />
+          <Route path='/authnaver' element={<AuthNaver isLoggendIn={isLoggendIn} setIsLoggendIn={setIsLoggendIn} />} />
+          <Route path='/profile' element={<Profile />} />
+          <Route path='/googlenick' element={<Google_Nick setIsLoggendIn={setIsLoggendIn} />} />
+          <Route path='/kakaonick' element={<Kakao_Nick setIsLoggendIn={setIsLoggendIn} />} />
+          <Route path='/join' element={<JoinPage setIsLoggendIn={setIsLoggendIn} isLoggendIn={isLoggendIn} />} />
+          <Route path="/post" element={<PostList  posts={posts} setPosts={setPosts}/>}/>
+          <Route path="/post/detail/:comm_idx"  element={<PostDetail posts={posts} 
+            like={like}  likedPosts={likedPosts} setLikedPosts={setLikedPosts} likeCount={likeCount} setLikeCount={setLikeCount}
+            setLike={setLike}/>}/>
+          <Route path="/postform" element={<PostForm onAddPost={handleAddPost} setPosts={setPosts} posts={posts}/>}/>
+          <Route path="/mypost" element = {<MyPost  posts={posts} onEditPost={handleUpdatedPost} 
+          like={like} setLike={setLike} likedPosts={likedPosts} setLikedPosts={setLikedPosts} likeCount={likeCount} setLikeCount={setLikeCount}
+          setPosts={setPosts}/>}/>
+          <Route path="/postupdate/:comm_idx" element={<Update posts={posts} setPosts={setPosts} />}/>
+          {/* <Route path='/slide' element={<SimpleSlider/>}/> */}
+        </Route>
+        <Route path='/planner' element={<Planner/>}/>
       </Routes>
       </Container>
     </div>

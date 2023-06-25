@@ -28,7 +28,7 @@ const Header = ({isLoggendIn}) => {
             </div>
             <div className='link-container'>
                 {/* <Link to='/'>Main</Link>{" "} */}
-                <Link to='' className='header-text'>일정 만들기</Link>
+                <Link to='/planner' className='header-text'>일정 만들기</Link>
             </div>
             <div className='link-container'>
                 <Link to='/post' className='header-text'>길스타그램</Link>
