@@ -20,11 +20,11 @@ function Update({posts,post,setPosts}) {
 let {comm_idx} = useParams();
 //  console.log(comm_idx);
 let findPost = posts.find((post) => {
-    return post.community.comm_idx == comm_idx
+    return post.comm_idx == comm_idx
 })
 // let findPost = posts.filter((post)=>{
-//   console.log("ggg",post.community.comm_idx);
-//   return post.community.comm_idx !== comm_idx
+//   console.log("ggg",post.comm_idx);
+//   return post.comm_idx !== comm_idx
   
 // })
 //  console.log("수정findPost",findPost);
@@ -114,7 +114,7 @@ let findPost = posts.find((post) => {
           label="제목"
           multiline
           maxRows={4}
-          defaultValue={findPost.community.comm_title}
+          defaultValue={findPost.comm_title}
           onChange={(e) => setTitle(e.target.value)}
           name='title'
         />
@@ -124,7 +124,7 @@ let findPost = posts.find((post) => {
           label="내용"
           multiline
           rows={4}
-          defaultValue={findPost.community.comm_content}
+          defaultValue={findPost.comm_content}
           onChange={(e) => setContent(e.target.value)}
           name="content"
         />
@@ -136,8 +136,8 @@ let findPost = posts.find((post) => {
        <Stack sx={{width:'100%'}} spacing={2}>
         <Alert severity="warning">수정하고 싶은 사진을 다시 넣어주세요</Alert>
        </Stack>
-      {/* {findPost.community.comm_file.map(() => ( */}
-        {/* <img key={findPost.community.comm_idx} src={"data:/image/;base64,"+post.community.comm_file} alt="게시물 사진" 
+      {/* {findPost.comm_file.map(() => ( */}
+        {/* <img key={findPost.comm_idx} src={"data:/image/;base64,"+post.comm_file} alt="게시물 사진" 
         style={{maxWidth : '20%'}}/> */}
       {/* ) */}
       {/* )} */}

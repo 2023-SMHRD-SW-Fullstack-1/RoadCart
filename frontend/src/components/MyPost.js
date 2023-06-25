@@ -17,12 +17,12 @@ function MyPost({ post, posts, onDeletePost, onEditPost, like,num,onLike,setPost
   let {comm_idx} = useParams();
   // 게시물 삭제
   // const handleDeletePost = (comm_idx) => {
-  //   let deletePost= (posts.filter((post) => comm_idx == post.community.comm_idx));
+  //   let deletePost= (posts.filter((post) => comm_idx == post.comm_idx));
   //   console.log("deletedPost",deletePost);
   
    
   //  posts.map((post)=>{
-  //   let deletePost=post.community.comm_idx
+  //   let deletePost=post.comm_idx
     
   //   console.log(deletePost);
   //   console.log("1",myPosts);
@@ -54,7 +54,7 @@ function MyPost({ post, posts, onDeletePost, onEditPost, like,num,onLike,setPost
   }
   //삭제하기
   const getDeletePost = async()=>{
-    await axios.delete(`http://172.30.1.39:8089/road/postdelete`,deleteData,config)
+    await axios.delete(`spring/road/postdelete`,deleteData,config)
     .then((res)=>{
       console.log('삭제mypost',res.data);
       alert("정말 삭제하시겠습니까?")
@@ -71,7 +71,7 @@ function MyPost({ post, posts, onDeletePost, onEditPost, like,num,onLike,setPost
 
 //내가 작성한 게시물 가져오기
   const getMyPost = async()=>{
-    await axios.post(`http://172.30.1.39:8089/road/mypost`,config)
+    await axios.post(`spring/road/mypost`,config)
   .then((res)=>{
     setMyposts(res.data);
      setPosts(res.data)})
@@ -85,7 +85,7 @@ function MyPost({ post, posts, onDeletePost, onEditPost, like,num,onLike,setPost
   //좋아요를 누르면 likeesPosts에 배열이 있는 지 확인하고 있으며 user_id제거
     const handleLike = (user_id,like_sum) => {
       console.log("like",like_sum);
-      axios.post(`http://172.30.1.39:8089/road/post`,config)
+      axios.post(`spring/road/post`,config)
       .then((res)=>{
         // console.log('결과',res.data);
          setPosts(res.data)})
@@ -132,41 +132,41 @@ console.log("num",num2);};
       {myPosts !== undefined ? 
        myPosts.map((post)=>(
         <Grid item xs={6}>
-        <div key={post.community.comm_idx}>
-        <Link to={`/post/detail/${post.community.comm_idx}`}>
-            {/* {post.community.img_file && post.community.img_file.length >0 && ( */}
-                <img src={"data:/image/;base64,"+post.community.comm_file} alt="게시물 이미지" style={{ 
+        <div key={post.comm_idx}>
+        <Link to={`/post/detail/${post.comm_idx}`} state={post}>
+            {/* {post.img_file && post.img_file.length >0 && ( */}
+                <img src={"data:/image/;base64,"+post.comm_file} alt="게시물 이미지" style={{ 
                   maxWidth: '100%',width:'400px',height:'300px'}} />
               {/* )} */}
               </Link><br/>
           <span style={{float:'left' ,marginLeft:'60px'}}>
           <Button
-                    onClick={() => handleLike(post.community.comm_idx)}
+                    onClick={() => handleLike(post.comm_idx)}
                     style={{
                       border: 'none',
                       backgroundColor: 'white',
                       width: '70px',
                     }}
                   >
-                    {likedPosts.includes(post.community.comm_idx) ? (
+                    {likedPosts.includes(post.comm_idx) ? (
                       <span>💗{likeCount}</span>
                     ) : (
                       <span>🤍{likeCount}</span>
                     )}
-                    <span>{post.community.like_count}</span>
+                    <span>{post.like_count}</span>
           </Button>
            </span>
               <br/><br/>
-          <h3 style={{whiteSpace:'pre'}}>{post.community.comm_title}</h3> 
+          <h3 style={{whiteSpace:'pre'}}>{post.comm_title}</h3> 
          
             <ButtonGroup variant='text' aria-label='text button group'>
-                 <Button onClick={() => getDeletePost(post.community.comm_idx)}>삭제하기</Button>
-              <Link to={`/postupdate/${post.community.comm_idx}`}>
+                 <Button onClick={() => getDeletePost(post.comm_idx)}>삭제하기</Button>
+              <Link to={`/postupdate/${post.comm_idx}`}>
                  <Button onClick={onEditPost}>수정하기</Button>
               </Link>
             </ButtonGroup>
           
-            {/* <Link to={`/post/detail/${post.community.comm_idx}`}><button>게시물 보기</button></Link> */}
+            {/* <Link to={`/post/detail/${post.comm_idx}`}><button>게시물 보기</button></Link> */}
         </div>
         </Grid>
         

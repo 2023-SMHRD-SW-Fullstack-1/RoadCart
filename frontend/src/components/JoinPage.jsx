@@ -83,7 +83,7 @@ const JoinPage = ({ setIsLoggendIn }) => {
                 user_nick: nick,
                 user_pw: pw,
             };
-            axios.post(`http://172.30.1.39:8089/road/join`, requestData, config)
+            axios.post(`spring/road/join`, requestData, config)
                 .then((res) => {
                     console.log(res.data);
                     sessionStorage.setItem('user_id', id)

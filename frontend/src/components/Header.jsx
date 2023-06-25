@@ -31,7 +31,7 @@ const Header = ({isLoggendIn}) => {
                 <Link to='' className='header-text'>일정 만들기</Link>
             </div>
             <div className='link-container'>
-                <Link to='' className='header-text'>길스타그램</Link>
+                <Link to='/post' className='header-text'>길스타그램</Link>
             </div>
             <div className='link-container'>
             <Link to='/logout' className='header-text'>{menu}</Link>
