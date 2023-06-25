@@ -16,23 +16,33 @@ public class t_LikesService {
 	@Autowired
 	private t_LikesMapper likesMapper;
 	
-	//좋아요 등록
-	public void likeUp(t_likes tlike) {
-		likesMapper.likeUp(tlike);
+	//좋아요 생성
+	public void addLikes(int comm_idx, String user_id) {
+		likesMapper.addLikes(comm_idx, user_id);
 	}
 	
-	//좋아요 취소
-	public void likeDelete(t_likes tlike) {
-		likesMapper.likeDelete(tlike);
+	//좋아요 증가(n->y)
+	public void likesUp(int comm_idx, String user_id) {
+		likesMapper.likesUp(comm_idx, user_id);
+	}	
+	
+	//좋아요 감소(y->n)
+	public void likesDown(int comm_idx, String user_id) {
+		likesMapper.likesDown(comm_idx, user_id);
 	}
 	
 	//좋아요 개수
-	public String likeSum(t_likes tlike) {
-		return likesMapper.likeSum(tlike) ;
+	public int likeSum(int comm_idx) {
+		return likesMapper.likeSum(comm_idx) ;
 	}
 	
 	// isLikes
-	public boolean isLikes(String user_id, int comm_idx){
+	public int isLikes(String user_id, int comm_idx){
 		return likesMapper.isLikes(user_id, comm_idx);
+	}
+	
+	// isExist
+	public int isExist(String user_id, int comm_idx) {
+		return likesMapper.isExist(user_id, comm_idx);
 	}
 }

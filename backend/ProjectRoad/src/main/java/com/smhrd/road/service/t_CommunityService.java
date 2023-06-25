@@ -16,33 +16,36 @@ import com.smhrd.road.converter.ImageToBase64;
 import com.smhrd.road.converter.ImgConverter;
 import com.smhrd.road.domain.t_community;
 import com.smhrd.road.mapper.t_CommunityMapper;
+import com.smhrd.road.mapper.t_LikesMapper;
 
 @Service
 public class t_CommunityService {
 
 	@Autowired
 	private t_CommunityMapper communityMapper;
+	
+	@Autowired
+	private t_LikesMapper likesMapper;
 
 	@Autowired
 	private ResourceLoader resourceLoader;
 
 	// 전체 게시글 조회
-	public JSONArray communityList(t_community comm) {
-		List<t_community> list = communityMapper.communityList(comm);
+	public JSONObject communityList(String user_id) {
+		List<t_community> list = communityMapper.communityList();
 
+		JSONObject obj = new JSONObject();
 		JSONArray jsonArray = new JSONArray();
+		JSONArray jsonArray2 = new JSONArray();
 		ImgConverter<File, String> converter = new ImageToBase64();
 
 		for (t_community community : list) {
 
 			File uploadDir = new File("c:/uploadImage");
 			File uploadedFile = new File(uploadDir, community.getComm_file());
-			//System.out.println("uploadedFile 값 : " + uploadedFile);
 			String filePath = uploadedFile.getAbsolutePath();
 
-			//System.out.println("filePath : " + filePath);
 			Resource resource = new FileSystemResource(uploadedFile); // 파일의 메타데이터
-			//System.out.println(resource);
 			String fileStringValue = null;
 			try {
 				fileStringValue = converter.convert(resource.getFile());
@@ -52,15 +55,17 @@ public class t_CommunityService {
 				e.printStackTrace();
 			}
 
-			//System.out.println(fileStringValue);
 			community.setComm_file(fileStringValue);
-			JSONObject obj = new JSONObject();
-			obj.put("community", community);
-
-			jsonArray.add(obj);
+			community.setComm_likes(likesMapper.likeSum(community.getComm_idx()));
+			jsonArray.add(community);
+			boolean isLike = likesMapper.isLikes(user_id, community.getComm_idx()) > 0 ? true : false;
+			jsonArray2.add(isLike);
+			
 		}
+		obj.put("community", jsonArray);
+		obj.put("isLike", jsonArray2);
 
-		return jsonArray;
+		return obj;
 	}
 
 	// my게시글 조회
@@ -92,12 +97,21 @@ public class t_CommunityService {
 //			System.out.println(fileStringValue);
 			community.setComm_file(fileStringValue);
 			JSONObject obj = new JSONObject();
-			obj.put("community", community);
 
-			jsonArray.add(obj);
+			jsonArray.add(community);
 		}
 
 		return jsonArray;
+	}
+	
+	// getComm
+	public t_community getComm(int comm_idx) {
+		return communityMapper.getComm(comm_idx);
+	}
+	
+	// 좋아요 갱신
+	public void updateLikes(int likes_sum, int comm_idx) {
+		communityMapper.updateLikes(likes_sum, comm_idx);
 	}
 
 	// 게시글 등록

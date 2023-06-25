@@ -14,4 +14,8 @@
 	<update id="commentUpdate" parameterType="com.smhrd.road.domain.t_comment">
 		update t_comment set cmt_content=#{cmt_content} where cmt_idx=#{cmt_idx}
 	</update>
+	<!-- comments 조회 -->
+	<select id="commentList" resultType="com.smhrd.road.domain.t_comment">
+		select * from t_comment where comm_idx=#{comm_idx}
+	</select>
   </mapper>

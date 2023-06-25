@@ -89,11 +89,11 @@
 			<artifactId>commons-io</artifactId>
 			<version>2.4</version>
 		</dependency>
-		<dependency>
+		<!--<dependency>
 			<groupId>com.smhrd</groupId>
 			<artifactId>BootBasic</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
-		</dependency>
+		</dependency>-->
 		
 
 		

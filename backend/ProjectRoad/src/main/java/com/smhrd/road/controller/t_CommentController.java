@@ -3,6 +3,7 @@ package com.smhrd.road.controller;
 import java.util.List;
 import java.util.Map;
 
+import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.smhrd.road.domain.t_comment;
 import com.smhrd.road.service.t_CommentService;
@@ -25,15 +27,20 @@ public class t_CommentController {
 
 	// 댓글 등록
 	@PostMapping("/comment")
-	public @ResponseBody void commentRegister(@RequestBody Map<String, Object> map) {
-		System.out.println(1111);
-		System.out.println("map 값 : "+map);
+	public @ResponseBody JSONObject commentRegister(@RequestBody Map<String, Object> map) {
 		String cmt_content = map.get("cmt_content").toString();
 		String user_id = map.get("user_id").toString();
 		int comm_idx = Integer.parseInt(map.get("comm_idx").toString());
 		
 		t_comment comment = new t_comment(cmt_content,user_id,comm_idx);
 		commentService.commentRegister(comment);
+		return commentService.commentList(comm_idx);
+	}
+	
+	// 댓글 조회
+	@PostMapping("/comment/{comm_idx}")
+	public @ResponseBody JSONObject commentList(@PathVariable("comm_idx") int comm_idx) {
+		return commentService.commentList(comm_idx);
 	}
 
 	// 댓글 수정

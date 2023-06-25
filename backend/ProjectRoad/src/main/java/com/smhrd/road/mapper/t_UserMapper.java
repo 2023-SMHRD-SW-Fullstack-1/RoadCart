@@ -52,6 +52,10 @@ public interface t_UserMapper {
 	// 닉네임 중복체크
 	@Select("select count(*) from t_user where user_nick=#{user_nick} and user_delete='n'")
 	public int nickCheck(String user_nick);
+	
+	// 닉네임 가져오기
+	@Select("select user_nick from t_user where user_id=#{user_id}")
+	public String selectNick(String user_id);
 
 	
 

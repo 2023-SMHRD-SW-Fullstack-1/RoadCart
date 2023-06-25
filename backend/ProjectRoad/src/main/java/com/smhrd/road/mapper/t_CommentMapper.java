@@ -25,4 +25,10 @@ public interface t_CommentMapper {
 	// cmt_idx 조회
 	@Select("select count(*) from t_commnet where cmt_idx=#{cmt_idx}")
 	public int selectIdx(int cmt_idx);
+	
+	// getComm
+	public t_community getComm(int comm_idx);
+	
+	// comments 조회
+	public List<t_comment> commentList(int comm_idx);
 }

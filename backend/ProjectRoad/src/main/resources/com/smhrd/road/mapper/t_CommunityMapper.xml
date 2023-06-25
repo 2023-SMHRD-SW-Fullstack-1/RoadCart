@@ -9,6 +9,10 @@
 		resultType="com.smhrd.road.domain.t_community">
 		select * from t_community 
 	</select>
+	<!--comm_idx로 게시글 조회-->
+	<select id="getComm" resultType="com.smhrd.road.domain.t_community">
+		select * from t_community where comm_idx=#{comm_idx}
+	</select>
 	<!-- 나의게시글 조회 -->
 	<select id="myCommunityList"
 		resultType="com.smhrd.road.domain.t_community">

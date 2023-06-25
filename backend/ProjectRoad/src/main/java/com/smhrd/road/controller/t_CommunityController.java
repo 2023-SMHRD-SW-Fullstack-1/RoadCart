@@ -41,10 +41,13 @@ public class t_CommunityController {
 
 	//전체 게시글 조회
 	@PostMapping(value="/post")
-	public @ResponseBody JSONArray communityList(t_community comm) {
-		JSONArray array = communityService.communityList(comm);
-		return array;
+	public @ResponseBody JSONObject communityList(@RequestBody String user_id) {
+		System.out.println(user_id);
+		JSONObject obj = communityService.communityList(user_id);
+		
+		return obj;
 	}
+	
 	
 	//나의 게시글 조회
 	@PostMapping(value="/mypost")
@@ -59,22 +62,20 @@ public class t_CommunityController {
 	public @ResponseBody void commRegister(
 			@RequestPart("data") t_community comm,
 	        @RequestPart("file") MultipartFile file) {
-		//System.out.println("comm : " + comm);
-	    //System.out.println("comm : "+comm.getComm_title() + "," + comm.getComm_content() + "," + comm.getUser_id());
-	    //System.out.println("file : "+file);
+
 	    if (file != null) {
-	        //System.out.println(file.getOriginalFilename());
-	        //System.out.println(UUID.randomUUID().toString());
 	        
 	        String newFileName = UUID.randomUUID().toString() + file.getOriginalFilename();
 	        String uploadPath = "c:\\uploadImage";
 	        try {
 	            // 파일 저장
 	            File destFile = new File(uploadPath, newFileName);
+	            System.out.println("1234567890");
 	            file.transferTo(destFile);
 
 	            // 저장된 파일 경로 설정
 	            comm.setComm_file("/" + newFileName);
+	            System.out.println(comm.getComm_file());
 	        } catch (IllegalStateException e) {
 	            e.printStackTrace();
 	        } catch (IOException e) {
@@ -137,25 +138,32 @@ public class t_CommunityController {
 	}
 	
 	
-	// 게시글 열람
+	
+	// 게시글 불러오기
 	@PostMapping("/postdetail/{comm_idx}")
-	public ModelAndView content(@PathVariable("comm_idx") int comm_idx) {
-	  t_community comm = communityService.content(comm_idx);
-	  File file = new File("c:\\uploadImage\\"+comm.getComm_file());
-
-	  ImgConverter<File, String> converter = new ImageToBase64();
-
-	  try {
-	    String fileStringValue = converter.convert(file);
-	    //System.out.println(fileStringValue);
-	  } catch (IOException e) {
-	    e.printStackTrace();
-	  }
-
-	  ModelAndView modelAndView = new ModelAndView("postdetail/postdetailpage"); // Set the correct template file path
-	  modelAndView.addObject("postDetail", comm);
-	  return modelAndView;
+	public @ResponseBody t_community getComm(@PathVariable("comm_idx") int comm_idx) {
+		return communityService.getComm(comm_idx);
 	}
+	
+	// 게시글 열람
+//	@PostMapping("/postdetail/{comm_idx}")
+//	public ModelAndView content(@PathVariable("comm_idx") int comm_idx) {
+//	  t_community comm = communityService.content(comm_idx);
+//	  File file = new File("c:\\uploadImage\\"+comm.getComm_file());
+//
+//	  ImgConverter<File, String> converter = new ImageToBase64();
+//
+//	  try {
+//	    String fileStringValue = converter.convert(file);
+//	    //System.out.println(fileStringValue);
+//	  } catch (IOException e) {
+//	    e.printStackTrace();
+//	  }
+//
+//	  ModelAndView modelAndView = new ModelAndView("postdetail/postdetailpage"); // Set the correct template file path
+//	  modelAndView.addObject("postDetail", comm);
+//	  return modelAndView;
+//	}
 	
 
 }
