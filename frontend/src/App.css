@@ -23,7 +23,7 @@
   cursor: pointer;
 }
 
-.container>div {
+.container>div  {
   display: flex;
   align-items: center;
   text-align: center;

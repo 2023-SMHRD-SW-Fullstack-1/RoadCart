@@ -19,6 +19,8 @@ import Loading from "./Loading"
 import { Link, useNavigate } from "react-router-dom";
 
 function Planner() {
+    const sessionStorage = window.sessionStorage
+    const id = sessionStorage.getItem("user_id");
   const initialColumn = {
     cart : {
       title: "cart",
@@ -256,9 +258,16 @@ function Planner() {
 
   const save = (title, content)=>{ // 저장하기
     let list = [];
-    let id = "1111";
-    Object.entries(columns).filter(item=>(item[0] !== "cart")).map(item=>item[1].items.map(e=>
-      list.push({...e,poi_dt: item[1].title, user_id: id, poi_info: "1111"})
+    console.log(columns);
+    Object.entries(columns).filter(item=>(item[0] !== "cart")).map(item=>item[1].items.map(e=>{
+        console.log(e);
+        let str = "";
+        if(e.poi_info !== undefined){
+            e.poi_info.forEach(element => {
+                str+=element.link +"@슬라이더@" + element.img + "@슬라이더@" + element.title + "@슬라이더@" + element.content + "@슬라이더@";
+                });
+        }
+      list.push({...e,poi_dt: item[1].title, user_id: id, poi_info: str});}
     ))
     let data = {
       t_schedule: {
@@ -270,14 +279,14 @@ function Planner() {
       },
       t_poi : list
     }
-    console.log(data);
-    axios.post('save/road/schedule/register',data).then((res)=>{console.log(res);});
+    console.log("송출값",data);
+    axios.post('/spring/road/schedule/register',data);
     navigate("/myplan");
   }
 
 
   return (
-    <div className="content-container">
+    <div className="content-container" style={{alignItems: "normal"}}>
       <React.Fragment>
       <Modal open={modalOpen} close={closeModal} save={save} header="제목 : ">
       </Modal>

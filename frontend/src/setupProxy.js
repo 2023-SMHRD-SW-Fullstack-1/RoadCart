@@ -20,7 +20,7 @@ module.exports = function(app){
           '^/spring': '' // URL ^/api -> 공백 변경
       }
     })
-)
+),
 app.use(
   createProxyMiddleware( '/scraper', {
       target: 'http://localhost:3010',

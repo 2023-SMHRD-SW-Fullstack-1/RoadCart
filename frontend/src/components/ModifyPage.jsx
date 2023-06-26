@@ -71,7 +71,7 @@ const ModifyPage = ({ isLoggendIn, setIsLoggendIn }) => {
                 user_nick = sessionStorage.setItem('user_nick', res.data.loginUser.user_nick)
                 user_pw = sessionStorage.setItem('user_pw', res.data.loginUser.user_pw)
                 alert('수정완료')
-                nav('/mypage')
+                nav('/')
             })
     }
 
