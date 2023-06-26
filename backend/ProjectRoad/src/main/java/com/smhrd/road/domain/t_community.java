@@ -7,8 +7,8 @@ import lombok.Setter;
 
 @AllArgsConstructor
 @NoArgsConstructor
-@Getter
 @Setter
+@Getter
 public class t_community {
 	
 	// 글 번호 
@@ -31,4 +31,5 @@ public class t_community {
     public t_community(int comm_idx) {
     	this.comm_idx=comm_idx;
 	}
+    
 }

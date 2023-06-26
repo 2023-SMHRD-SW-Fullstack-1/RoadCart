@@ -82,7 +82,14 @@ public class t_CommunityController {
 	            e.printStackTrace();
 	        }
 	    }
-	    communityService.commRegister(comm);
+	    try {
+	    	comm.getSche_idx();
+	    	communityService.commRegister2(comm);
+	    } catch(NullPointerException error) {
+	    	communityService.commRegister(comm);
+	    }
+	    
+	    
 	}
 	
 	// 게시글 수정

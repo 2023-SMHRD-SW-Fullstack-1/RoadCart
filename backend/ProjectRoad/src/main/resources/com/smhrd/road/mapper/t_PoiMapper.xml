@@ -11,9 +11,9 @@
 	<insert id="poiRegister"
 		parameterType="com.smhrd.road.domain.t_poi">
 		INSERT INTO t_poi (user_id, poi_dt, poi_category, poi_name,
-		poi_info, poi_addr, lat, lng, poi_img)
+		poi_info, poi_addr, lat, lng, poi_img, sche_idx)
 		VALUES (#{user_id}, #{poi_dt}, #{poi_category}, #{poi_name}, 
-		#{poi_info}, #{poi_addr}, #{lat}, #{lng}, #{poi_img})
+		#{poi_info}, #{poi_addr}, #{lat}, #{lng}, #{poi_img}, #{sche_idx})
 	</insert>
 
 	<!-- 여행 관심지 수정 -->

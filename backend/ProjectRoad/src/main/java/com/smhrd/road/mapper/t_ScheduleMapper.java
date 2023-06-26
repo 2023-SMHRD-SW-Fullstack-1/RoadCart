@@ -40,6 +40,10 @@ public interface t_ScheduleMapper {
 	@Select("select count(*) from t_schedule where sche_idx=#{sche_idx}")
 	public int sch_idxSelect(int sche_idx);
 	
+	// idx 반환
+	@Select("select sche_idx from t_schedule where sche_title=#{sche_title} and sche_content=#{sche_content} and sche_start_dt=#{sche_start_dt} and sche_end_dt=#{sche_end_dt}")
+	public int schIdx(t_schedule sch);
+	
 	
 	
 }

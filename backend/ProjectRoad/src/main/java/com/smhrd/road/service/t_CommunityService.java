@@ -114,9 +114,14 @@ public class t_CommunityService {
 		communityMapper.updateLikes(likes_sum, comm_idx);
 	}
 
-	// 게시글 등록
+	// 게시글 등록(sche_idx X)
 	public int commRegister(t_community tcomm) {
 		return communityMapper.commRegister(tcomm);
+	}
+	
+	// 게시글 등록(sche_idx O)
+	public int commRegister2(t_community tcomm) {
+		return communityMapper.commRegister2(tcomm);
 	}
 
 	// VO조회

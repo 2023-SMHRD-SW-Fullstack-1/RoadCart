@@ -22,8 +22,11 @@ public interface t_CommunityMapper {
 	@Select ("select count(*) from t_community where comm_idx=#{comm_idx}")
 	public int commSelect(t_community comm);
 
-	// 게시글 등록
+	// 게시글 등록(sche_idx X)
 	public int commRegister(t_community tcomm);
+	
+	// 게시글 등록(sche_idx O)
+	public int commRegister2(t_community tcomm);
 
 	// 게시글 수정
 	public void commUpdate(t_community tcomm);

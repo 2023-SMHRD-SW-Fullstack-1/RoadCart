@@ -39,9 +39,11 @@ public class t_poi {
 
 	// 이미지 주소
 	private String poi_img;
+	
+	private int sche_idx;
 
 	public t_poi(String user_id, String poi_dt, String poi_category, String poi_name, String poi_info, String poi_addr,
-			double lat, double lng, String poi_img) {
+			double lat, double lng, String poi_img, int sche_idx) {
 		this.user_id = user_id;
 		this.poi_dt = poi_dt;
 		this.poi_category = poi_category;
@@ -51,6 +53,7 @@ public class t_poi {
 		this.lat = lat;
 		this.lng = lng;
 		this.poi_img = poi_img;
+		this.sche_idx = sche_idx;
 	}
 
 	public t_poi(String poi_dt, String poi_category, String poi_name, String poi_info, String poi_addr,

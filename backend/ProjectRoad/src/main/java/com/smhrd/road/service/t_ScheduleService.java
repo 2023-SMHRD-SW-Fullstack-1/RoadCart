@@ -58,6 +58,11 @@ public class t_ScheduleService {
 		return scheduleMapper.sch_idxSelect(sche_idx);
 	}
 	
+	// idx 반환
+	public int schIdx(t_schedule sch) {
+		return scheduleMapper.schIdx(sch);
+	}
+	
 
 	
 

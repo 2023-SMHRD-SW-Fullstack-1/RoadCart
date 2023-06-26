@@ -37,51 +37,21 @@ public class t_ScheduleController {
 	
 	// 일정 리스트
 	@PostMapping(value = "/schedulelist")
-	public @ResponseBody JSONObject scheduleList(@RequestParam("user_id") String user_id) {
-		System.out.println("user_id : "+user_id);
+	public @ResponseBody List<t_schedule> scheduleList(@RequestBody String user_id) {
 		int result = scheduleService.userId_select(user_id);
-		System.out.println("result 값 : "+result);
-		
-		JSONObject obj = new JSONObject();
-		if(result>=1) {
-			System.out.println("전송 성공");
-			List<t_schedule> sch = scheduleService.scheduleList(user_id);
-			for(int i=0; i<sch.size();i++) {
-				System.out.println(sch.get(i).getSche_title());
-			}
-			obj.put("sch_list", sch);
-			System.out.println("obj 값 : "+ obj);
-			return obj;
-		}else {
-			System.err.println("전송 실패");
-			return obj;
-		}
-		
-		
+		List<t_schedule> sch = scheduleService.scheduleList(user_id);
+		return sch;
+
 	}
 	
 	// 해당날짜 일정조회
 	@PostMapping(value="/scheduledetail")
-	public @ResponseBody JSONObject scheduleDetail(@RequestParam("sche_idx") int sche_idx) {
-		System.out.println("sche_idx 값 : "+sche_idx);
-		int result = scheduleService.sch_idxSelect(sche_idx);
-		System.out.println("result 값 : "+result);
+	public @ResponseBody List<t_poi> scheduleDetail(@RequestBody String sche_idx) {
+		int idx = Integer.parseInt(sche_idx);
+		System.out.println(idx);
 		
-		JSONObject obj = new JSONObject();
-		if(result>=1) {
-			System.out.println("전송 성공");
-
-			List<t_poi> poiList =  scheduleService.scheduleDetail(sche_idx);
-			for (int i = 0; i < poiList.size(); i++) {
-				System.out.println(poiList.get(i).getPoi_name());
-			}
-			obj.put("poiList", poiList);
-			System.out.println("obj 값 : "+obj);
-			return obj;
-		}else {
-			System.out.println("전송 실패");
-			return obj;
-		}
+		List<t_poi> poiList =  scheduleService.scheduleDetail(idx);
+		return poiList;
 		
 	}
 
@@ -99,10 +69,17 @@ public class t_ScheduleController {
 				reqSche.get("sche_end_dt").toString(),
 				reqSche.get("user_id").toString());
 		scheduleService.scheduleRegister(sch);
+		int idx = scheduleService.schIdx(sch);
 
 		// poi 등록
 		List<Map<String, Object>> reqList = (List<Map<String, Object>>) map.get("t_poi");
 		for (int i = 0; i < reqList.size(); i++) {
+			String img = "";
+			try {
+				img = reqList.get(i).get("poi_img").toString();
+			} catch(NullPointerException error) {
+				System.out.println(error);
+			}
 			t_poi poi = new t_poi(
 					reqList.get(i).get("user_id").toString(), 
 					reqList.get(i).get("poi_dt").toString(),
@@ -112,8 +89,8 @@ public class t_ScheduleController {
 					reqList.get(i).get("poi_addr").toString(),
 					Double.parseDouble(reqList.get(i).get("lat").toString()),
 					Double.parseDouble(reqList.get(i).get("lng").toString()), 
-					reqList.get(i).get("poi_img").toString());
-			System.out.println(reqList.get(i).get("poi_dt").toString());
+					img,
+					idx);
 			poiService.poiRegister(poi);
 		}
 

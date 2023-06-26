@@ -26,6 +26,14 @@
 		values(#{comm_title},#{comm_content},#{comm_file},
 		#{user_id})
 	</insert>
+	
+	<!-- 게시글 등록 -->
+	<insert id="commRegister2" parameterType="com.smhrd.road.domain.t_community">
+		insert into t_community (comm_title, comm_content,
+		comm_file, user_id, sche_idx)
+		values(#{comm_title},#{comm_content},#{comm_file},
+		#{user_id},#{sche_idx})
+	</insert>
 
 	<!-- 게시글 수정 -->
 	<update id="commUpdate" parameterType="com.smhrd.road.domain.t_community">
