@@ -26,7 +26,6 @@ const ModifyPage = ({ isLoggendIn, setIsLoggendIn }) => {
 
     const [userNick, setUserNick] = useState(user_nick)
     const [userPw, setUserPw] = useState(user_pw)
-    const [pwMessage, setPwMessage] = useState("");
 
 
     // const user_sns = sessionStorage.getItem('user_sns')
@@ -57,6 +56,7 @@ const ModifyPage = ({ isLoggendIn, setIsLoggendIn }) => {
     // 회원정보수정
     const ModNick = () => {
         if (userNick === "") { return alert("닉네임을 입력해주세요") }
+        if (userPw === "") { return alert("닉네임을 입력해주세요") }
         const requestData = {
             user_id: user_id,
             user_nick: userNick,
