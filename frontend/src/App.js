@@ -56,7 +56,7 @@ function App() {
       {/* <Container fixed> */}
       <Routes>
         <Route element={<MainLayout isLoggendIn={isLoggendIn}/>}>
-          <Route path='/' element={<Main />} />
+          <Route path='/' element={<Main setPosts={setPosts} posts={posts}/>} />
           <Route path='/login' element={<LoginPage isLoggendIn={isLoggendIn} setIsLoggendIn={setIsLoggendIn} />} />
           <Route path='/logout' element={<LogOutPage setIsLoggendIn={setIsLoggendIn} />} />
           <Route path='/mypage' element={<MyPage />} />

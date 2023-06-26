@@ -81,7 +81,7 @@ const PostList = ({ posts, setPosts, likeCount, likedPosts, setPost }) => {
   };
 
   return (
-    <div style={{marginLeft:'px'}}>
+    <div >
      
       
      
@@ -98,11 +98,11 @@ const PostList = ({ posts, setPosts, likeCount, likedPosts, setPost }) => {
             navigate("/postform");
           }}
           variant="outlined"
-          style={{float:'left'}}
+          style={{float:'left',marginLeft:'50px'}}
         >
           글쓰기
         </Button>
-        <div style={{float:'right'}}>       
+        <div style={{float:'right',marginRight:'50px'}}>       
            <input
           type="text"
           defaultValue={filteredPosts}
@@ -132,8 +132,8 @@ const PostList = ({ posts, setPosts, likeCount, likedPosts, setPost }) => {
         <Grid container spacing={2}>
           {filteredPosts.length > 0
             ? filteredPosts.map((filteredPosts, index) => (
-                <Grid item xs={6}>
-                  <div key={filteredPosts.comm_idx} className="PostListDiv" style={{margin:'0px'}}>
+                <Grid item xs={6} key={filteredPosts.comm_idx[index]}>
+                  <div className="PostListDiv">
                     {/* <h4>검색된 게시물</h4> */}
 
                     <Link to={`/post/detail/${filteredPosts.comm_idx}`}>
@@ -150,7 +150,7 @@ const PostList = ({ posts, setPosts, likeCount, likedPosts, setPost }) => {
                       {/* )} */}
                     </Link>
                     <br />
-                    <span style={{float:'left',marginLeft:'90px' }}>
+                    <span style={{float:'left',marginLeft:'130px' }}>
                     <Button
                         onClick={() => handleLike(filteredPosts, index)}
                         style={{
@@ -175,47 +175,48 @@ const PostList = ({ posts, setPosts, likeCount, likedPosts, setPost }) => {
                 </Grid>
               ))
             : posts.map((post, index, list) => (
-                <Grid item xs={6}>
-                  <div key={post.comm_idx} className="PostListDiv" style={{margin:'0px'}}>
-                    <Link to={`/post/detail/${post.comm_idx}`} state={post}>
-                      {/* {post.img_file && post.img_file.length >0 && ( */}
-                      <img
-                        src={"data:/image/;base64," + post.comm_file}
-                        alt="게시물 이미지"
-                        style={{
-                          maxWidth: "100%",
-                          width: "600px",
-                          height: "400px",
-                        }}
-                      />
-                      {/* )} */}
-                    </Link>
-                    <br />
+              <Grid item xs={6} key={post.comm_idx[index]}>
+                <div  className="PostListDiv">
+                  <Link to={`/post/detail/${post.comm_idx}`} state={post}>
+                    {/* {post.img_file && post.img_file.length >0 && ( */}
+                    <img
+                      src={"data:/image/;base64," + post.comm_file}
+                      alt="게시물 이미지"
+                      style={{
+                        maxWidth: "100%",
+                        width: "600px",
+                        height: "400px",
+                      }}
+                    />
+                    {/* )} */}
+                  </Link>
+                  <br />
 
-                    <span style={{float:'left',marginLeft:'90px' }}>
-                      <Button
-                        onClick={() => handleLike(post, index)}
-                        style={{
-                          border: "none",
-                          backgroundColor: "white",
-                          width: "70px",
-                        }}
-                      >
-                        {post.isLike ? (
-                          <span>💗{post.comm_likes}</span>
-                        ) : (
-                          <span>🤍{post.comm_likes}</span>
-                        )}
-                      </Button>
-                    </span>
-                    <br />
-                    <h3 style={{ whiteSpace: "pre" }}>{post.comm_title}</h3>
+                  <span style={{float:'left',marginLeft:'130px' }}>
+                    <Button
+                      onClick={() => handleLike(post, index)}
+                      style={{
+                        border: "none",
+                        backgroundColor: "white",
+                        width: "70px",
+                      }}
+                    >
+                      {post.isLike ? (
+                        <span>💗{post.comm_likes}</span>
+                      ) : (
+                        <span>🤍{post.comm_likes}</span>
+                      )}
+                    </Button>
+                  </span>
+                  <br />
+                  <h3 style={{ whiteSpace: "pre" }}>{post.comm_title}</h3>
 
-                    <br />
-                    <br />
-                  </div>
-                </Grid>
-              ))}
+                  <br />
+                  <br />
+                </div>
+              </Grid>
+            ))
+            }
         </Grid>
       </Box>
       </section>

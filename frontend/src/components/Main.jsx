@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import MainPageBoxItem from './MainPageBoxItem';
 import Grid from '@mui/material/Grid';
 import ImageSlider from "react-simple-image-slider";
@@ -6,16 +6,20 @@ import mainLogo from './img/roadLogo.png'
 import { borderRadius, boxSizing, height, margin, width } from '@mui/system';
 import MainContents from './MainContents';
 import MainGuide from './MainGuide';
+import { Link } from 'react-router-dom';
+import axios from 'axios';
 
-const Main = () => {
+const Main = ({posts,setPosts}) => {
+   
     const imgList = [
         "https://www.lottehotelmagazine.com/resources/d434c17f-5ac2-4b98-8021-f3bdd5cc26f4_img_TRAVEL_busan_detail01.jpg",
         "https://a.cdn-hotels.com/gdcs/production37/d1169/1dcbfef5-2070-48ce-8d62-3e0fffa21797.jpg"]
     const images = () => {
         let imgUrl = imgList.map((item) => {
             console.log(item);
-        })
-    }
+        }) }
+      
+   
     return (
 
         <>
@@ -37,15 +41,19 @@ const Main = () => {
                         <h1 id='MonthTitle'> 7월 국내 축제 🎈</h1>
                     </div>
                     <Grid container spacing={2}  >
-                        <Grid item xs={6}>
-                            <div className='TextOnImg'>
+                        <Grid item xs={6} >
+                               
+                            <div className='TextOnImg' >
+                                <Link to={`/post/detail/102`}>
                                 <div className='BackgroundWrap'>
-                                    <div className='Content'>
-                                        <span>은하수를 여행하는 몽골 여행자를 위한 안내서</span>
-                                        <p id='ContentP'>보성차의 역사·문화·경관자원을 활용해 몸과 마음을 힐링하는 문화관광축제</p>
-                                    </div>
+                                    <div className='Content' >
+                                         <span style={{color:'white'}}>청도 프로방스 빛축제</span>
+                                         <p id='ContentP' style={{color:'white'}}>프로방스 마을로의 로맨틱한 여행과 빛축제를 즐길 수 있는 곳 </p>
+                                    </div> 
                                 </div>
+                                </Link>
                             </div>
+                         
                         </Grid>
                         <Grid item xs={6}><MainPageBoxItem />
                         </Grid>

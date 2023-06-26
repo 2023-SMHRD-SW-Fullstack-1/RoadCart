@@ -22,35 +22,13 @@ function PostForm({onAddPost,setPosts,posts,post}) {
     if (fileList !== null) {
       setImages(fileList);
     }
-    // const files = Array.from(event.target.files);
-    // const imageUrls = files.map((file) => URL.createObjectURL(file));
+   
   };
-  
-  
-  // for(let i = 0; i<images.length; i++){
-    //   formData.append("img_file",images)
-    //   console.log("images-",images);
-    // }
-
-  // formData.append("img_file",post)
-  // console.log("전post",post);
-//  console.log("data",data);
-  //객체를 Json타입으로 변환하여 Blod객체를 생성
-  // const requestData ={
-  //   comm_title: title,
-  //   comm_content: content,
-  //   // img_file: images,
-  //   user_id: "1111"
-  //  }
- 
- 
-
   // 게시물 작성
   const handleSubmit = (event) => {
    event.preventDefault();
     console.log("작성");
     // 게시물 작성 로직 작성
-    // if (title.trim() !== '' && content.trim() !== '' && images !== null) {
       if (true) {
       const newPost = {
         comm_idx:'',
@@ -60,42 +38,22 @@ function PostForm({onAddPost,setPosts,posts,post}) {
         comm_dt:'',
         user_id:''
       };
-      
-      // setTitle('');
-      // setContent('');
-      // setImages(null);
-      const config = {
-        headers: { 'Content-Type': 'multipart/form-data'
-        // /'application/json;charset=UTF-8'
-           }
+       const config = {
+        headers: { 'Content-Type': 'multipart/form-data'}
       }
       const data={
           comm_title: title,
           comm_content: content,
-          user_id: "1111"
-          
+          user_id: "1111" 
       }
       const formData = new FormData()
       let files = event.target.imageInput.files
       console.log(files);
 
       formData.append("file",files[0])
-      // for (let key of formData.keys()) {
-      //   console.log("1",key);
-      // }
-      // // FormData의 value 확인
-      // for (let value of formData.values()) {
-      //   console.log("2",value.name);
-      // }
+    
       formData.append("data",new Blob([JSON.stringify(data)],{type:'application/json'}))
-      // const formData = new FormData()
-      // formData.append('comm_title',title)
-      // formData.append('comm_content',content)
-      // formData.append('comm_file',images)
-      // formData.append('user_id','1111')
-       // 화면이 mount되었을 때 백엔드 데이터 보내기
-       // FormData의 key 확인
-         
+    
         axios.post(`spring/road/postform`,formData, config)
         .then((res)=>{
           // console.log('결과postform',res.data);
@@ -105,16 +63,6 @@ function PostForm({onAddPost,setPosts,posts,post}) {
            navigate('/mypost');
           })
         .catch(error=>console.log("error",error))
-     
-        // for (let key of formData.keys()) {
-        //   console.log(key);
-        // }
-        // // FormData의 value 확인
-        // for (let value of formData.values()) {
-        //   console.log(value);
-        // }
-    // 작성 완료 후 MyPost.js로 이동
-   
   };
   }
 

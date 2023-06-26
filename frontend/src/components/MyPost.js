@@ -108,12 +108,7 @@ console.log("myposts",post);
       <form>
       <h2>나의 게시물</h2>
       <br/><br/>
-      {/* <Link underline="hover" color="inherit" href="/postform">
-        작성하기
-      </Link>
-      <Link underline="hover" color="inherit" href="/post">
-        
-      </Link> */}
+      
     
 <div>
 <Box sx={{flexGrow:1}}>
@@ -121,7 +116,7 @@ console.log("myposts",post);
       {myPosts !== undefined ? 
        myPosts.map((post,index)=>(
         <Grid item xs={6}>
-        <div key={post.comm_idx}>
+        <div key={post.comm_idx[index]}>
         <Link to={`/post/detail/${post.comm_idx}`} state={post}>
             {/* {post.img_file && post.img_file.length >0 && ( */}
                 <img src={"data:/image/;base64,"+post.comm_file} alt="게시물 이미지" style={{ 
@@ -139,7 +134,6 @@ console.log("myposts",post);
               </Link>
             </ButtonGroup>
           
-            {/* <Link to={`/post/detail/${post.comm_idx}`}><button>게시물 보기</button></Link> */}
         </div>
         </Grid>
         

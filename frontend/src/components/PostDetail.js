@@ -97,17 +97,23 @@ const config = {
         {/* <ImageSlider images={"data:image/;base64,"+file} width={700} 
         height={700} showBullets={true} showNavs={true} style={{marginLeft:'220px'}}/>  */}
       {/* {post.comm_file.map((post, index) => ( */}
+      <section>
+      <h3 style={{whiteSpace: 'pre-wrap',width:'1000px',textAlign:'left',fontSize:'30px'}}>{post.comm_title}</h3>
+      <br/><br/>
+      </section>
       <img src={"data:/image/;base64,"+post.comm_file} alt="게시물 이미지" style={{ 
                   maxWidth: '100%',width:'1000px',height:'500px'}} />
       {/* ))} */}
       <section >
-      <span style={{float:'left'}}>
+      <span style={{float:''}}>
        <Button
                     onClick={()=>{handleLike()}}
                     style={{
                       border: 'none',
                       backgroundColor: 'white',
                       width: '70px',
+                      float:'left',
+                      marginLeft:'-20px'
                     }}
                   >
                     {isLike ? (
@@ -121,12 +127,10 @@ const config = {
         <br/>
         
        
-      <section>
-      <h3 style={{whiteSpace: 'pre-wrap',width:'1000px'}}>{post.comm_title}</h3>
-      </section>
+      
       <br/><br/>
       <section>
-      <p style={{whiteSpace: 'pre-wrap',width:'1000px'}} >{post.comm_content}</p>
+      <p style={{whiteSpace: 'pre-wrap',width:'1000px',textAlign:'left'}} >{post.comm_content}</p>
       </section>
       <br/><br/><br/><br/>
       </section>
