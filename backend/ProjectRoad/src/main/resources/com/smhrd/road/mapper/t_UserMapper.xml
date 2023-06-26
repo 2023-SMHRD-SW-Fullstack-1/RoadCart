@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.smhrd.road.mapper.t_UserMapper">
+	
+	<!-- 유저조회 -->
+	<select id="userList" resultType="com.smhrd.road.domain.t_user">
+		select * from t_user where user_delete='n'
+	</select>
+
+	<!-- 회원가입 -->
+	<insert id="join" parameterType="com.smhrd.road.domain.t_user">
+		insert into t_user(user_id, user_pw, user_nick)
+		values(#{user_id},#{user_pw},#{user_nick})
+	</insert>
+	
+	<!-- SNS회원가입 -->
+	<insert id="snsJoin" parameterType="com.smhrd.road.domain.t_user">
+		insert into t_user(user_id, user_pw, user_nick, user_sns, user_token)
+		values(#{user_id},#{user_pw},#{user_nick},#{user_sns},#{user_token})
+	</insert>
+
+	<!-- 로그인 -->
+<!-- 	<select id="login" parameterType="com.smhrd.road.domain.t_user" resultType="com.smhrd.road.domain.t_user">
+		select * from t_user where user_id=#{user_id} and user_pw=#{user_pw}
+	</select>
+ -->
+	<!-- 회원정보수정 -->
+	<update id="update" parameterType="com.smhrd.road.domain.t_user">
+		update t_user set
+		user_nick=#{user_nick},user_pw=#{user_pw} where
+		user_id=#{user_id} and user_delete='n'
+	</update>
+
+	<!-- 회원삭제(관리자) -->
+	<update id="delete_admin">
+		update t_user set user_delete='y' where user_id=#{user_id}
+	</update>
+	
+	<!-- 회원탈퇴(유저) -->
+	<update id="delete_success">
+		update t_user set user_delete='y' where user_id=#{user_id}
+	</update>
+
+</mapper>

@@ -32,7 +32,7 @@ const Google_Nick = ({isLoggendIn, setIsLoggendIn}) => {
         console.log(data);
         const requestData = { user_nick: inputNick }
         console.log('버튼 클릭했을 때:', inputNick);
-        axios.post(`http://172.30.1.39:8089/road/nickcheck`, requestData, config)
+        axios.post(`/spring/road/nickcheck`, requestData, config)
             .then((res) => {
                 console.log(res.data);
                 if (res.data == true) {
@@ -60,7 +60,7 @@ const Google_Nick = ({isLoggendIn, setIsLoggendIn}) => {
             headers: { 'Content-Type': 'application/json;charset=UTF-8' }
         }
         console.log(requestData);
-        axios.post(`http://172.30.1.39:8089/road/snsjoin`, requestData, config)
+        axios.post(`/spring/road/snsjoin`, requestData, config)
             .then((res) => {
                 console.log(res.data);
                 // 세션 저장

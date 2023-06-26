@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.smhrd.road.mapper.t_CommunityMapper">
+
+	<!-- 게시글 조회 -->
+	<select id="communityList"
+		resultType="com.smhrd.road.domain.t_community">
+		select * from t_community 
+	</select>
+	<!--comm_idx로 게시글 조회-->
+	<select id="getComm" resultType="com.smhrd.road.domain.t_community">
+		select * from t_community where comm_idx=#{comm_idx}
+	</select>
+	<!-- 나의게시글 조회 -->
+	<select id="myCommunityList"
+		resultType="com.smhrd.road.domain.t_community">
+		select * from t_community 
+	</select>
+
+	<!-- 게시글 등록 -->
+	<insert id="commRegister" parameterType="com.smhrd.road.domain.t_community">
+		insert into t_community (comm_title, comm_content,
+		comm_file, user_id)
+		values(#{comm_title},#{comm_content},#{comm_file},
+		#{user_id})
+	</insert>
+
+	<!-- 게시글 수정 -->
+	<update id="commUpdate" parameterType="com.smhrd.road.domain.t_community">
+		UPDATE t_community
+		SET
+		comm_title = #{comm_title},
+		comm_content = #{comm_content},
+		comm_file = #{comm_file}
+		WHERE comm_idx = #{comm_idx}
+	</update>
+
+	<!-- 게시글 삭제 -->
+	<delete id="commDelete" parameterType="int">
+		DELETE FROM t_community
+		WHERE comm_idx = #{comm_idx}
+	</delete>
+</mapper>

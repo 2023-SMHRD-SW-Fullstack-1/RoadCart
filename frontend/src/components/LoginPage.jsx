@@ -45,7 +45,7 @@ const LoginPage = ({ isLoggendIn, setIsLoggendIn }) => {
             user_id: inputId,
             user_pw: inputPw,
         };
-        axios.post(`http://172.30.1.39:8089/road/login`, requestData, config)
+        axios.post(`spring/road/login`, requestData, config)
             .then((res) => {
 
                 try{
