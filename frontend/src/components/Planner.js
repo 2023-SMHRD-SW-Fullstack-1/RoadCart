@@ -16,7 +16,7 @@ import { ko } from "date-fns/esm/locale";
 import PinDropIcon from '@mui/icons-material/PinDrop';
 import EditCalendarIcon from '@mui/icons-material/EditCalendar';
 import Loading from "./Loading"
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 function Planner() {
   const initialColumn = {
@@ -50,6 +50,7 @@ function Planner() {
     isPanto: false,
   })
   const [backColor, setBackColor] = useState({road: {back:"white",text:"black"},search: {back:"#2196f3",text:"white"},planner: {back:"white",text:"black"}});
+  const navigate = useNavigate();
 
   useEffect(() => { // 지도검색
     if (!map) return;
@@ -271,6 +272,7 @@ function Planner() {
     }
     console.log(data);
     axios.post('save/road/schedule/register',data).then((res)=>{console.log(res);});
+    navigate("/myplan");
   }
 
 
