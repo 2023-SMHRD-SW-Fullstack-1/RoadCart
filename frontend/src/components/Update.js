@@ -71,7 +71,7 @@ let findPost = posts.find((post) => {
     formData.append("file",files[0])
     formData.append("data",new Blob([JSON.stringify(data)],{type:'application/json'}))
     //  console.log("updatepormData: ",formData);
-    axios.post(`http://172.30.1.39:8089/road/postupdate`,formData, config)
+    axios.post(`http://172.30.1.39:8089/road/postupdate/${comm_idx}`,formData, config)
   
       .then((res)=>{
         alert('수정완료')

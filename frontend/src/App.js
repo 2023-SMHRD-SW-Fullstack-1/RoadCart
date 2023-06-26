@@ -39,7 +39,7 @@ function App() {
 
   // 게시물 수정
   const handleUpdatedPost = (updatedPost,comm_idx) => {
-    setPosts(posts.filter((post) => post.community.comm_idx !== comm_idx));
+    setPosts(posts.filter((post) => post.comm_idx !== comm_idx));
   };
 
    // 이미지 업로드 및 미리보기
@@ -53,7 +53,7 @@ function App() {
   return (
     <div className='container' >
       <br/>
-      <Container fixed>
+      {/* <Container fixed> */}
       <Routes>
         <Route element={<MainLayout isLoggendIn={isLoggendIn}/>}>
           <Route path='/' element={<Main />} />
@@ -80,7 +80,7 @@ function App() {
         </Route>
         <Route path='/planner' element={<Planner/>}/>
       </Routes>
-      </Container>
+      {/* </Container> */}
     </div>
   );
 }

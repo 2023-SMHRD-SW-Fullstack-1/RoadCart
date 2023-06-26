@@ -78,6 +78,7 @@ function PostForm({onAddPost,setPosts,posts,post}) {
       const formData = new FormData()
       let files = event.target.imageInput.files
       console.log(files);
+
       formData.append("file",files[0])
       // for (let key of formData.keys()) {
       //   console.log("1",key);
@@ -118,9 +119,9 @@ function PostForm({onAddPost,setPosts,posts,post}) {
   }
 
   return (
-    <div className='postFormContainer'>
+    <div className='postFormContainer' style={{marginLeft:'250px',textAlign:'center',display:"flex", flexDirection:"row", alignItems: "center", }}>
       <form encType='multipart/form-data' onSubmit={(e)=>{handleSubmit(e)}}>
-       <TextField style={{width:'50vw'}}
+       <TextField style={{width:'70vw'}}
           id="outlined-multiline-flexible"
           label="제목"
           multiline
@@ -131,7 +132,7 @@ function PostForm({onAddPost,setPosts,posts,post}) {
         />
        
       <br/><br/><br/>
-      <TextField style={{width:'50vw'}}
+      <TextField style={{width:'70vw'}}
           id="outlined-multiline-static"
           label="내용"
           multiline

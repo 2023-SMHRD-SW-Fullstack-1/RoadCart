@@ -11,6 +11,7 @@ import axios from 'axios';
 
 function MyPost({ post, posts, onDeletePost, onEditPost, like,num,onLike,setPosts,setPost,
   setLike,likedPosts,likeCount,setLikeCount,setLikedPosts }) {
+  const id = "1111";
   const [myPosts, setMyposts] = useState();
   const navigate = useNavigate();
   const [idx,setIdx] = useState()
@@ -49,12 +50,10 @@ function MyPost({ post, posts, onDeletePost, onEditPost, like,num,onLike,setPost
     // /'application/json;charset=UTF-8' 
   }
   }
-  const deleteData={
-    comm_idx : comm_idx
-  }
+ 
   //삭제하기
   const getDeletePost = async()=>{
-    await axios.delete(`spring/road/postdelete`,deleteData,config)
+    await axios.delete(`spring/road/postdelete/${comm_idx}`,config)
     .then((res)=>{
       console.log('삭제mypost',res.data);
       alert("정말 삭제하시겠습니까?")
@@ -81,41 +80,31 @@ function MyPost({ post, posts, onDeletePost, onEditPost, like,num,onLike,setPost
   useEffect(()=>{
     getMyPost();
   },[])
-  let num2 = 0
-  //좋아요를 누르면 likeesPosts에 배열이 있는 지 확인하고 있으며 user_id제거
-    const handleLike = (user_id,like_sum) => {
-      console.log("like",like_sum);
-      axios.post(`spring/road/post`,config)
-      .then((res)=>{
-        // console.log('결과',res.data);
-         setPosts(res.data)})
-      .catch(error=>console.log("error",error))
-      num2+=1
-      setLikeCount(num2)
-      if (likedPosts.includes(user_id)) {
-        // 이미 좋아요를 누른 경우,좋아요 취소
-        num2-=1
-        setLikeCount(num2)
-        setLikedPosts((prevLikedPosts) =>
-          prevLikedPosts.filter((comm_idx) => comm_idx !== user_id)
-        )
-        setLike(false)
-        
-      } else {
-        // 좋아요 누르지 않은 경우 좋아요 추가
-        setLikedPosts((prevLikedPosts) => [...prevLikedPosts, user_id]);
-        setLike(true)
-        setLikeCount(num2)
-       
-        
-      }
-     
+  const handleLike = (post, index) => {
+    let user_id = id;
 
-console.log("num",num2);};
+    if (post.isLike) {
+      axios.post("spring/road/community/removelikes", [user_id, post.comm_idx]);
+      let temp = [...posts];
+      temp[index].comm_likes = temp[index].comm_likes - 1;
+      temp[index].isLike = false;
+      console.log(temp);
+      setPosts(temp);
+    } else {
+      axios.post("spring/road/community/addlikes", [user_id, post.comm_idx]);
+      let temp = [...posts];
+      temp[index].comm_likes = temp[index].comm_likes + 1;
+      temp[index].isLike = true;
+      console.log(temp);
+      setPosts(temp);
+    }
+  };
+
+console.log("myposts",post);
 
 
   return (
-    <div >
+    <div style={{margin:'100px'}}>
       <form>
       <h2>나의 게시물</h2>
       <br/><br/>
@@ -130,35 +119,19 @@ console.log("num",num2);};
 <Box sx={{flexGrow:1}}>
       <Grid container spacing={2}>
       {myPosts !== undefined ? 
-       myPosts.map((post)=>(
+       myPosts.map((post,index)=>(
         <Grid item xs={6}>
         <div key={post.comm_idx}>
         <Link to={`/post/detail/${post.comm_idx}`} state={post}>
             {/* {post.img_file && post.img_file.length >0 && ( */}
                 <img src={"data:/image/;base64,"+post.comm_file} alt="게시물 이미지" style={{ 
-                  maxWidth: '100%',width:'400px',height:'300px'}} />
+                  maxWidth: '100%',width:'600px',height:'400px'}} />
               {/* )} */}
               </Link><br/>
-          <span style={{float:'left' ,marginLeft:'60px'}}>
-          <Button
-                    onClick={() => handleLike(post.comm_idx)}
-                    style={{
-                      border: 'none',
-                      backgroundColor: 'white',
-                      width: '70px',
-                    }}
-                  >
-                    {likedPosts.includes(post.comm_idx) ? (
-                      <span>💗{likeCount}</span>
-                    ) : (
-                      <span>🤍{likeCount}</span>
-                    )}
-                    <span>{post.like_count}</span>
-          </Button>
-           </span>
-              <br/><br/>
+        
+              
           <h3 style={{whiteSpace:'pre'}}>{post.comm_title}</h3> 
-         
+          <br/>
             <ButtonGroup variant='text' aria-label='text button group'>
                  <Button onClick={() => getDeletePost(post.comm_idx)}>삭제하기</Button>
               <Link to={`/postupdate/${post.comm_idx}`}>

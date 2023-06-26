@@ -87,20 +87,22 @@ const config = {
 
      const removeComment = async(comment)=>{
       await axios.post(`/spring/road/comment/delete/${comment.cmt_idx}`);
+      alert('댓글을 삭제하시겠습니까?')
       getComments();
      }
 
   return (
-    <div className='postDetailContainer'>
+    <div className='postDetailContainer' style={{margin:'100px',marginLeft:'330px' }}>
       <form>
         {/* <ImageSlider images={"data:image/;base64,"+file} width={700} 
         height={700} showBullets={true} showNavs={true} style={{marginLeft:'220px'}}/>  */}
       {/* {post.comm_file.map((post, index) => ( */}
       <img src={"data:/image/;base64,"+post.comm_file} alt="게시물 이미지" style={{ 
-                  maxWidth: '100%',width:'400px',height:'300px'}} />
-      {/* ))}<br/><br/><br/> */}
-      <span style={{float:'left' ,marginLeft:'200px'}}>
-      <Button
+                  maxWidth: '100%',width:'1000px',height:'500px'}} />
+      {/* ))} */}
+      <section >
+      <span style={{float:'left'}}>
+       <Button
                     onClick={()=>{handleLike()}}
                     style={{
                       border: 'none',
@@ -114,31 +116,41 @@ const config = {
                       <span>🤍{post.comm_likes}</span>
                     )}
                     <span>{post.like_count}</span>
-          </Button>
+       </Button>
         </span>
-       <br/><br/>
-      <h3 style={{whiteSpace: 'pre-wrap'}}>{post.comm_title}</h3>
-      <br/><br/><br/>
-      <p style={{whiteSpace: 'pre-wrap'}} >{post.comm_content}</p>
-
-      <br/><br/><br/><br/><br/><br/>
-      <div>
-       
-        <Box style={{backgroundSize:'cover',position:'relative'}}>
-        <TextField id="standard-basic" label="댓글" name="comment" variant="standard" onChange={(e)=>{setComment(e.target.value)}} value={comment}
-         style={{width:"630px",height:'40px'}} />
+        <br/>
         
        
-        <Button onClick={handleCommentSubmit} style={{float:'right',marginRight:'0px'
-      ,position:'absolute',top:'50%',left:'50%',transform:'translate(430%,-50%)'}}>작성</Button><br/><br/>
+      <section>
+      <h3 style={{whiteSpace: 'pre-wrap',width:'1000px'}}>{post.comm_title}</h3>
+      </section>
+      <br/><br/>
+      <section>
+      <p style={{whiteSpace: 'pre-wrap',width:'1000px'}} >{post.comm_content}</p>
+      </section>
+      <br/><br/><br/><br/>
+      </section>
+      
+      <div>
+      
+       <section>
+        <Box style={{backgroundSize:'cover',position:'relative'}}>
+        <TextField id="standard-basic" label="댓글" name="comment" variant="standard" onChange={(e)=>{setComment(e.target.value)}} value={comment}
+         style={{width:"1000px",height:'40px'}} />
+        
+       
+        <Button onClick={handleCommentSubmit} style={{float:'right'
+      ,position:'absolute'}}>작성</Button><br/><br/>
        
         </Box>
+        </section>
         {commentList.map((comment, index) => (
-          <div style={{display:"flex", flexDirection:"row", alignItems: "center", textAlign: "center"}}>
-            <strong>{comment.user_nick}</strong>
-            <p key={index} >{comment.cmt_content}</p>
-            <p>{comment.cmt_dt}</p>
-            {comment.user_id === id && <button type='button' onClick={()=>{removeComment(comment)}}>삭제</button>}
+          <div style={{display:"flex", flexDirection:"row", alignItems: "center", textAlign: "center",marginLeft:'0px'}}>
+             <p key={index}  >{comment.cmt_content}</p>
+            <strong style={{width:'100px',float:'left'}}>{comment.user_nick}</strong>
+           
+            <p style={{width:'300px'}}>{comment.cmt_dt}</p>
+            {comment.user_id === id && <Button type='button' onClick={()=>{removeComment(comment)}}>삭제</Button>}
           </div>
         ))}
         
