@@ -64,14 +64,14 @@ const PostList = ({ posts, setPosts, likeCount, likedPosts, setPost }) => {
     let user_id = id;
 
     if (post.isLike) {
-      axios.post("spring/road/community/removelikes", [user_id, post.comm_idx]);
+      axios.post("/spring/road/community/removelikes", [user_id, post.comm_idx]);
       let temp = [...posts];
       temp[index].comm_likes = temp[index].comm_likes - 1;
       temp[index].isLike = false;
       console.log(temp);
       setPosts(temp);
     } else {
-      axios.post("spring/road/community/addlikes", [user_id, post.comm_idx]);
+      axios.post("/spring/road/community/addlikes", [user_id, post.comm_idx]);
       let temp = [...posts];
       temp[index].comm_likes = temp[index].comm_likes + 1;
       temp[index].isLike = true;
