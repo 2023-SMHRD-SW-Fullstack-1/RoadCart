@@ -76,10 +76,10 @@ function App() {
           like={like} setLike={setLike} likedPosts={likedPosts} setLikedPosts={setLikedPosts} likeCount={likeCount} setLikeCount={setLikeCount}
           setPosts={setPosts}/>}/>
           <Route path="/postupdate/:comm_idx" element={<Update posts={posts} setPosts={setPosts} />}/>
-          <Route path='/myplan' element={<Myplan/>}/>
+          <Route path='/myplan' element={<Myplan isLoggendIn={isLoggendIn}/>}/>
           {/* <Route path='/slide' element={<SimpleSlider/>}/> */}
         </Route>
-        <Route path='/planner' element={<Planner/>}/>
+        <Route path='/planner' element={<Planner isLoggendIn={isLoggendIn}/>}/>
       </Routes>
       {/* </Container> */}
     </div>

@@ -19,6 +19,7 @@ import Loading from "./Loading"
 import { Link, useNavigate } from "react-router-dom";
 
 function Planner() {
+    const sessionStorage = window.sessionStorage
     const id = sessionStorage.getItem("user_id");
   const initialColumn = {
     cart : {
@@ -258,12 +259,16 @@ function Planner() {
   const save = (title, content)=>{ // 저장하기
     let list = [];
     Object.entries(columns).filter(item=>(item[0] !== "cart")).map(item=>item[1].items.map(e=>{
+        console.log(e);
         let str = "";
-    e.poi_info.forEach(element => {
-    str+=element.link +"@슬라이더@" + element.img + "@슬라이더@" + element.title + "@슬라이더@" + element.content + "@슬라이더@";
-    });
+        if(e.poi_info !== undefined){
+            e.poi_info.forEach(element => {
+                str+=element.link +"@슬라이더@" + element.img + "@슬라이더@" + element.title + "@슬라이더@" + element.content + "@슬라이더@";
+                });
+        }
       list.push({...e,poi_dt: item[1].title, user_id: id, poi_info: str});}
     ))
+    console.log("12312321");
     let data = {
       t_schedule: {
         sche_title: title,
@@ -281,7 +286,7 @@ function Planner() {
 
 
   return (
-    <div className="content-container">
+    <div className="content-container" style={{alignItems: "normal"}}>
       <React.Fragment>
       <Modal open={modalOpen} close={closeModal} save={save} header="제목 : ">
       </Modal>
