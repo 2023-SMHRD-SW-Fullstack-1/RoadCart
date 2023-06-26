@@ -16,6 +16,7 @@ import { ko } from "date-fns/esm/locale";
 import PinDropIcon from '@mui/icons-material/PinDrop';
 import EditCalendarIcon from '@mui/icons-material/EditCalendar';
 import Loading from "./Loading"
+import { Link } from "react-router-dom";
 
 function Planner() {
   const initialColumn = {
@@ -283,7 +284,7 @@ function Planner() {
       <div>
         <div className="menu-container" style={{display: "flex", flexDirection:"column", width:"4vw", height: "100vh", borderRight: "solid 1px black"}}>
           <div onClick={()=>{getApi()}} style={{marginTop: "20px", textAlign: "center", paddingBottom: "20px"}}>
-            <button>메인</button><div>홈</div></div>
+            <Link to="/"><div>홈</div></Link></div>
           <div onClick={()=>{searchDisplay();setDateStatus();let color = backColor.search.back !== "white" ? {back:"white",text:"black"} : {back:"#2196f3",text:"white"};setBackColor({...backColor, search: color})}} 
           style={{textAlign: "center", backgroundColor: backColor.search.back, color: backColor.search.text, paddingBottom: "15px", paddingTop: "15px"}}>
             <PinDropIcon color=""/><div>검색</div></div>
@@ -302,7 +303,7 @@ function Planner() {
             <div style={{position: "relative"}}>
               <div style={{position: "absolute", display: "flex", flexDirection: "row", zIndex:"2", background: "white"}}>
                 {/* 검색탭 */}
-                <div ref={searchDisplayed} className="search-container" style={{height: "100vh", width: "15vw", padding: "20px", borderRight: "solid 1px black"}}>
+                <div ref={searchDisplayed} className="search-container" style={{height: "95vh", width: "15vw", padding: "20px", borderRight: "solid 1px black"}}>
                     <div style={{height: "100px"}}>
                       <div className="searchDiv62">
                         <input className="searchInput62" placeholder="검색어 입력" ref={search} type="text" onKeyDown={(e)=>{e.code === "Enter" && setKeyword(search.current.value)}}/>

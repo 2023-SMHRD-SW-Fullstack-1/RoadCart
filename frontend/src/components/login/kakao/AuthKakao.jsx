@@ -50,7 +50,7 @@ const AuthKakao = ({ isLoggendIn, setIsLoggendIn }) => {
             const config = {
                 headers: { 'Content-Type': 'application/json;charset=UTF-8' }
             }
-            axios.post(`http://172.30.1.39:8089/road/snslogin`, requestData, config)
+            axios.post(`/spring/road/snslogin`, requestData, config)
                 .then((res) => {
                     if (!res.data.loginUser) {
                         sessionStorage.setItem('user_token', data.id)

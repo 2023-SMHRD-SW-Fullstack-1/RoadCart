@@ -15,7 +15,7 @@ const Profile = () => {
                 url: "/v2/user/me",
             })
 
-            axios.post('http://localhost:3000/profile',{
+            axios.post('/spring/profile',{
                 username : data.profile.nickname,
                 email : data.kakao_account.email,
             })
