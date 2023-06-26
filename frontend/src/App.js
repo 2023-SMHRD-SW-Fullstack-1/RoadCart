@@ -20,6 +20,7 @@ import Update from './components/Update';
 import Container  from '@mui/material/Container';
 import MainLayout from './components/MainLayout';
 import Planner from './components/Planner';
+import Myplan from './components/Myplan';
 
 
 
@@ -76,6 +77,7 @@ function App() {
           like={like} setLike={setLike} likedPosts={likedPosts} setLikedPosts={setLikedPosts} likeCount={likeCount} setLikeCount={setLikeCount}
           setPosts={setPosts}/>}/>
           <Route path="/postupdate/:comm_idx" element={<Update posts={posts} setPosts={setPosts} />}/>
+          <Route path='/myplan' element={<Myplan/>}/>
           {/* <Route path='/slide' element={<SimpleSlider/>}/> */}
         </Route>
         <Route path='/planner' element={<Planner/>}/>
