@@ -53,7 +53,6 @@ function App() {
 
   return (
     <div className='container' >
-      <br/>
       {/* <Container fixed> */}
       <Routes>
         <Route element={<MainLayout isLoggendIn={isLoggendIn}/>}>
