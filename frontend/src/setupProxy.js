@@ -4,7 +4,7 @@ const { createProxyMiddleware } = require('http-proxy-middleware');
 module.exports = function(app){
   app.use(
       createProxyMiddleware('/api', {
-          target: 'http://172.30.1.39:8089',
+          target: process.env.SPRING_SERVER_IP,
           changeOrigin: true,
           pathRewrite: {
             '^/api': '' // URL ^/api -> 공백 변경
@@ -14,7 +14,7 @@ module.exports = function(app){
 
   app.use(
     createProxyMiddleware('/spring', {
-        target: 'http://localhost:8089',
+        target: process.env.SPRING_SERVER_IP,
         changeOrigin: true,
         pathRewrite: {
           '^/spring': '' // URL ^/api -> 공백 변경
