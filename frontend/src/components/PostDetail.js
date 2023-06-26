@@ -17,7 +17,7 @@ const PostDetail = ({ like,num,onLike ,posts,likedPosts,likeCount,setLikeCount,s
   const [post, setPost] = useState(location.state);
   const {comm_idx} = useParams();
   const [comment, setComment] = useState(); //댓글 한 개
-  const [isLike, setIslike] = useState(false);
+  const [isLike, setIslike] = useState();
   const [commentList, setCommentList] = useState([]);
   const id = "1111";
   const nick = "2222";
@@ -30,6 +30,10 @@ const PostDetail = ({ like,num,onLike ,posts,likedPosts,likeCount,setLikeCount,s
   const closeModal = () => {
         setMyplanModalOpen(false);
       };
+
+      useEffect(()=>{
+        setIslike(location.state.isLike);
+      },[])
 
 const config = {
   headers: { 'Content-Type': 'multipart/form-data'/'application/json;charset=UTF-8'}
