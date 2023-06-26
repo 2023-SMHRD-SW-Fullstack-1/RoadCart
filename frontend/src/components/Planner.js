@@ -258,6 +258,7 @@ function Planner() {
 
   const save = (title, content)=>{ // 저장하기
     let list = [];
+    console.log(columns);
     Object.entries(columns).filter(item=>(item[0] !== "cart")).map(item=>item[1].items.map(e=>{
         console.log(e);
         let str = "";
@@ -268,7 +269,6 @@ function Planner() {
         }
       list.push({...e,poi_dt: item[1].title, user_id: id, poi_info: str});}
     ))
-    console.log("12312321");
     let data = {
       t_schedule: {
         sche_title: title,
@@ -279,7 +279,7 @@ function Planner() {
       },
       t_poi : list
     }
-    console.log(data);
+    console.log("송출값",data);
     axios.post('/spring/road/schedule/register',data);
     navigate("/myplan");
   }
