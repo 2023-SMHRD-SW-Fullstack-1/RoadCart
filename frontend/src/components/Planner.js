@@ -16,11 +16,12 @@ import { ko } from "date-fns/esm/locale";
 import PinDropIcon from '@mui/icons-material/PinDrop';
 import EditCalendarIcon from '@mui/icons-material/EditCalendar';
 import Loading from "./Loading"
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 
 function Planner() {
     const sessionStorage = window.sessionStorage
     const id = sessionStorage.getItem("user_id");
+    const location = useLocation();
   const initialColumn = {
     cart : {
       title: "cart",
@@ -54,7 +55,16 @@ function Planner() {
   const [backColor, setBackColor] = useState({road: {back:"white",text:"black"},search: {back:"#2196f3",text:"white"},planner: {back:"white",text:"black"}});
   const navigate = useNavigate();
 
+  useEffect(()=>{
+    location.state && setColumns({...location.state.columns, cart : {
+      title: "cart",
+      items: []
+    }});
+  },[])
+  
+
   useEffect(() => { // 지도검색
+    
     if (!map) return;
     const ps = new kakao.maps.services.Places();
 
@@ -361,7 +371,7 @@ function Planner() {
                             >
                               <span onClick={()=>{setLineOpacity(true)}}>{parseInt(column.title.substring(4,6)).toString()}월 {parseInt(column.title.substring(6,8).toString())}일</span>
                               {column.items.map((item, index) => (
-                                <Draggable key={item.lat} draggableId={item.lat} index={index}>
+                                <Draggable key={item.poi_name} draggableId={item.poi_name} index={index}>
                                   {(provided) => (
                                     <li onClick={()=>{setInfo(item); setLineOpacity(true)}}
                                       ref={provided.innerRef}

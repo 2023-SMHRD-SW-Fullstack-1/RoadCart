@@ -22,7 +22,7 @@ const MyPage = ({isLoggendIn}) => {
             <img id='profile' src={[ProfileLogo]} width='250px'/>
             <h1 id='nickname'>{user_nick}</h1>
             <div>
-            <button className="MyPageBtn" role="button">나의 일정</button>
+            <Link to='/myplan' style={{textDecoration:'none'}}><button className="MyPageBtn" role="button">나의 일정</button></Link>
             <button className="MyPageBtn" role="button">내 글 보기</button>
             <Link to='/myprofile' style={{textDecoration:'none'}}><button className="MyPageBtn">회원정보수정</button></Link>
             </div>

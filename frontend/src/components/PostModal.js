@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
-import "../CSS/MyplanModal.css";
+import "../CSS/PostModal.css";
 import {
   CustomOverlayMap,
   Map,
@@ -12,9 +12,9 @@ import axios from "axios";
 import Review from './Review';
 import { Link } from "react-router-dom";
 
-const MyplanModal = (props) => {
+const PostModal = (props) => {
   const [columns, setColumns] = useState();
-  const { open, close, header, item } = props;
+  const { open, close, header, sche_idx } = props;
   const [lineOpacity, setLineOpacity] = useState(true);
   const [markers, setMarkers] = useState([]);
   const [map, setMap] = useState();
@@ -30,7 +30,7 @@ const MyplanModal = (props) => {
 
   useEffect(()=>{
     
-    axios.post("/spring/road/scheduledetail",item.sche_idx.toString(),{headers:{"Content-Type":"text/plain"}})
+    axios.post("/spring/road/scheduledetail",sche_idx.toString(),{headers:{"Content-Type":"text/plain"}})
     .then((res)=>{
       
       console.log(res.data);
@@ -86,7 +86,7 @@ const MyplanModal = (props) => {
         }
       });
       setColumns(map);
-      setState({
+      sche_idx && setState({
         center: {lat: res.data[0].lat,lng:res.data[0].lng},
         isPanto: true
       })
@@ -167,9 +167,7 @@ const MyplanModal = (props) => {
                 </div>
           </main>
           <footer>
-            <Link to={"/postform"} state={{columns, item}}><button className="close">글쓰기</button></Link>{" "}
-            <Link to={"/planner"} state={{columns, item}}><button className="close">수정하기</button></Link>{" "}
-            <button className="close">삭제하기</button>
+            <Link to={"/planner"} state={{columns, sche_idx }}><button className="close">일정 가져가기</button></Link>{" "}
           </footer>
         </section>
       ) : null}
@@ -178,4 +176,4 @@ const MyplanModal = (props) => {
   );
 };
 
-export default MyplanModal;
+export default PostModal;

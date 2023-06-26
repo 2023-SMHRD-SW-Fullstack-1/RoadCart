@@ -8,6 +8,7 @@ import Button from '@mui/material/Button';
 import axios from 'axios';
 import Fab from '@mui/material/Fab';
 import AddIcon from '@mui/icons-material/Add';
+import PostModal from './PostModal';
 
 
 const PostDetail = ({ like,num,onLike ,posts,likedPosts,likeCount,setLikeCount,setLikedPosts,setLike }) => {
@@ -21,6 +22,14 @@ const PostDetail = ({ like,num,onLike ,posts,likedPosts,likeCount,setLikeCount,s
   const id = "1111";
   const nick = "2222";
 
+
+  const [myplanModalOpen, setMyplanModalOpen] = useState(false);
+  const openModal = () => {
+        setMyplanModalOpen(true);
+      };
+  const closeModal = () => {
+        setMyplanModalOpen(false);
+      };
 
 const config = {
   headers: { 'Content-Type': 'multipart/form-data'/'application/json;charset=UTF-8'}
@@ -92,7 +101,12 @@ const config = {
      }
 
   return (
+    
     <div className='postDetailContainer' style={{margin:'100px',marginLeft:'330px' }}>
+      <React.Fragment>
+    <PostModal open={myplanModalOpen} close={closeModal} sche_idx={post.sche_idx} header="">
+      </PostModal>
+    </React.Fragment>
       <form>
         {/* <ImageSlider images={"data:image/;base64,"+file} width={700} 
         height={700} showBullets={true} showNavs={true} style={{marginLeft:'220px'}}/>  */}
@@ -132,7 +146,7 @@ const config = {
       <section>
       <p style={{whiteSpace: 'pre-wrap',width:'1000px',textAlign:'left'}} >{post.comm_content}</p>
       </section>
-      <br/><br/><br/><br/>
+      <br/><br/>{post.sche_idx && <Button onClick={()=>{openModal()}}>일정보기</Button>}<br/><br/>
       </section>
       
       <div>
@@ -163,6 +177,7 @@ const config = {
       <Button onClick={handleGoBack}>뒤로가기</Button>
       </form>
     </div>
+    
   );
 };
 

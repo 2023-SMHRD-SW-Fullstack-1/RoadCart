@@ -13,7 +13,6 @@ import Button from '@mui/material/Button';
 export default function BasicCard({item}) {
     
     const [myplanModalOpen, setMyplanModalOpen] = useState(false);
-    console.log(item);
     const openModal = () => {
         setMyplanModalOpen(true);
       };
@@ -23,7 +22,7 @@ export default function BasicCard({item}) {
   return (
         <React.Fragment>
     <Card sx={{ minWidth: 275 }}>
-      <MyplanModal open={myplanModalOpen} close={closeModal} sche_idx={item.sche_idx} header="제목 : ">
+      <MyplanModal open={myplanModalOpen} close={closeModal} item={item} header="제목 : ">
       </MyplanModal>
       <CardContent>
         <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import Alert from '@mui/material/Alert';
@@ -9,6 +9,7 @@ import axios from 'axios'
 
 
 function PostForm({onAddPost,setPosts,posts,post}) {
+  const location = useLocation();
   const [title, setTitle] = useState('');
   const [content, setContent] = useState('');
   const [images, setImages] = useState();
@@ -44,7 +45,8 @@ function PostForm({onAddPost,setPosts,posts,post}) {
       const data={
           comm_title: title,
           comm_content: content,
-          user_id: "1111" 
+          user_id: "1111",
+          sche_idx: location.state.item.sche_idx
       }
       const formData = new FormData()
       let files = event.target.imageInput.files
