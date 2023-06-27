@@ -16,8 +16,10 @@ import { ko } from "date-fns/esm/locale";
 import PinDropIcon from '@mui/icons-material/PinDrop';
 import EditCalendarIcon from '@mui/icons-material/EditCalendar';
 import HomeIcon from '@mui/icons-material/Home';
+import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 import Loading from "./Loading"
 import { Link, useLocation, useNavigate } from "react-router-dom";
+import SaveIcon from '@mui/icons-material/Save';
 
 function Planner() {
     const sessionStorage = window.sessionStorage
@@ -153,10 +155,6 @@ function Planner() {
 
   const plannerDisplay = ()=>{ // 일정관리 열기
     plannerDisplayed.current.style.display = plannerDisplayed.current.style.display === "none" ? "block" : "none";
-  }
-
-  const getApi = async() => { // DB호출
-    await axios.get("http://172.30.1.39:8089/road").then((res)=>{console.log(res);})
   }
 
   const plannerDate = (update)=>{ // 캘린더
@@ -305,7 +303,7 @@ function Planner() {
       </Review>
       <div>
         <div className="menu-container" style={{display: "flex", flexDirection:"column", width:"4vw", height: "100vh", borderRight: "solid 1px black"}}>
-          <div onClick={()=>{getApi()}} style={{marginTop: "20px", textAlign: "center", paddingBottom: "20px"}}>
+          <div style={{marginTop: "20px", textAlign: "center", paddingBottom: "20px"}}>
             <Link to="/"><HomeIcon/><div>홈</div></Link></div>
           <div onClick={()=>{searchDisplay();setDateStatus();let color = backColor.search.back !== "white" ? {back:"white",text:"black"} : {back:"#2196f3",text:"white"};setBackColor({...backColor, search: color})}} 
           style={{textAlign: "center", backgroundColor: backColor.search.back, color: backColor.search.text, paddingBottom: "15px", paddingTop: "15px"}}>
@@ -344,7 +342,7 @@ function Planner() {
                 </div>
                 {/* 일정관리탭 */}
                 <div ref={plannerDisplayed} className="planner-container" style={{display: "none", height: "100vh", width: "15vw", borderRight: "solid 1px black"}}> 
-                  <div style={{position:"static",zIndex:"3", paddingLeft: "40px",paddingTop: "20px"}}>
+                  <div style={{position:"static",zIndex:"3",paddingTop: "20px", alignItems:"center", marginLeft: "30px", display:"flex"}}>
                     <DatePicker
                       locale={ko}
                       selectsRange={true}
@@ -357,7 +355,7 @@ function Planner() {
                       customInput={<ExampleCustomInput />}
                       dateFormat="MM월 dd일"
                     />
-                      <button onClick={openModal}>저장하기</button>
+                    <SaveIcon style={{marginLeft:"10px"}} fontSize="large" onClick={openModal}/>
                       
                   </div>
                   <div>
@@ -366,7 +364,7 @@ function Planner() {
                         <div className="liste2">
                         <Droppable key={columnId} droppableId={columnId}>
                           {(provided, snapshot) => (
-                            <ol onClick={()=>{setMarkers(column.items);setDateStatus(columnId);}}
+                            <ol style={{flexDirection:"row",marginLeft:"-40px", marginRight:"25px"}} onClick={()=>{setMarkers(column.items);setDateStatus(columnId);}}
                               ref={provided.innerRef}
                               {...provided.droppableProps}
                             >
@@ -402,18 +400,18 @@ function Planner() {
                         className="cart"
                         {...provided.droppableProps}
                         ref={provided.innerRef}
-                      >
+                      ><br></br>
                         <span>길바구니</span>
                         {columns.cart.items.map((item, index) => (
                           <Draggable key={item.lat} draggableId={item.lat} index={index}>
                             {(provided) => (
-                              <li
+                              <li style={{flexDirection:"row", textAlign:"center"}}
                               onClick={()=>{setInfo(item)}}
                               ref={provided.innerRef}
                               {...provided.dragHandleProps}
                               {...provided.draggableProps}
                               >
-                                {item.poi_name}<button onClick={()=>{removeCart(index)}}>삭제</button>
+                                {item.poi_name}<DeleteForeverIcon style={{float:"right", justifyItems:"end"}} onClick={()=>{removeCart(index)}}/>
                               </li>
                             )}
                           </Draggable>

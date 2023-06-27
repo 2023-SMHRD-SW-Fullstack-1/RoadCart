@@ -100,7 +100,7 @@ const ModifyPage = ({ isLoggendIn, setIsLoggendIn }) => {
                                     :
                                     <input onChange={(e) => setUserPw(e.target.value)} className='Modifyinput' type='password' defaultValue={123456789} />
                                 }
-                                <p className="JoinMessage"> {pwMessage} </p>
+                                <p className="JoinMessage"> </p>
                             </td>
                         </tr>
 

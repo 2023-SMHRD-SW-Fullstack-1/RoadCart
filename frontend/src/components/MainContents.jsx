@@ -20,7 +20,7 @@ const MainContents = () => {
                 {
                     list.map((item,i) =>
                         <div key={item.title[i]} className='RoadGramItem' >
-                            <li>
+                            <li className='main-li'>
                             <img src={item.src} id='RoadGramBoxImg' width='200px'></img>
                             <div className='RoadGramItemDetail'>
                                 <span>{item.title}</span>

@@ -8,6 +8,8 @@ import MainContents from './MainContents';
 import MainGuide from './MainGuide';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
+import MainSlider from './MainSlider';
+import '../Main.css'
 
 const Main = ({posts,setPosts}) => {
    
@@ -29,14 +31,15 @@ const Main = ({posts,setPosts}) => {
                     {/* <img src={mainLogo} height='80px' width='100%'/> */}
                     <h1>길바구니</h1>
                 </div>
-                <section style={{ height: '400px', width: '100%', minWidth: '28rem' }} >
+                <MainSlider/>
+                {/* <section  > */}
                     {/* <ImageSlider id='ImageSlider' images={imgList} width={'100%'} objectFit={imgList} height={'700px'}
     showBullets={true} showNavs={true} autoPlay={false} />*/}
-                </section>
-                <section style={{ backgroundColor: 'lightgray', width: '100%', height: '200px' }}>
+                {/* </section> */}
+                <section style={{ backgroundColor: 'f6f6f6' }}>
                     <MainGuide/>
                 </section>
-                <div style={{ backgroundColor: '#f6f6f6', width: '100%', paddingBottom: '40px', paddingTop: '20px' }}>
+                <div style={{ width: '100vw', paddingBottom: '40px', paddingTop: '20px' }}>
                     <div id='MonthContainer'>
                         <h1 id='MonthTitle'> 7월 국내 축제 🎈</h1>
                     </div>
@@ -60,8 +63,8 @@ const Main = ({posts,setPosts}) => {
                     </Grid>
                 </div>
                 <div className='MainSection'>
-                    <h1>요즘, 어디 가?👀</h1>
-                    <MainContents />
+                    {/* <h1>요즘, 어디 가?👀</h1> */}
+                    {/* <MainContents /> */}
                 </div>
             </div>
         </>

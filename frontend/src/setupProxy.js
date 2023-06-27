@@ -23,7 +23,7 @@ module.exports = function(app){
 ),
 app.use(
   createProxyMiddleware( '/scraper', {
-      target: 'http://192.168.0.248:3010',
+      target: 'http://localhost:3010',
       changeOrigin: true,
   })
 )
