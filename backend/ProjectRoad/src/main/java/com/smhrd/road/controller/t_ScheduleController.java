@@ -26,6 +26,7 @@ import com.smhrd.road.service.t_PoiService;
 import com.smhrd.road.service.t_ScheduleService;
 
 @Controller
+//@CrossOrigin("http://172.30.1.28:3000")
 @CrossOrigin("http://localhost:3000")
 public class t_ScheduleController {
 

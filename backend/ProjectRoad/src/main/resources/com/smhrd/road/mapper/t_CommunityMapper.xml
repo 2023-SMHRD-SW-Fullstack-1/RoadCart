@@ -16,7 +16,7 @@
 	<!-- 나의게시글 조회 -->
 	<select id="myCommunityList"
 		resultType="com.smhrd.road.domain.t_community">
-		select * from t_community 
+		select * from t_community where user_id=#{user_id}
 	</select>
 
 	<!-- 게시글 등록 -->

@@ -69,8 +69,8 @@ public class t_CommunityService {
 	}
 
 	// my게시글 조회
-	public JSONArray myCommunityList(t_community comm) {
-		List<t_community> list = communityMapper.myCommunityList(comm);
+	public List<t_community> myCommunityList(String user_id) {
+		List<t_community> list = communityMapper.myCommunityList(user_id);
 
 		JSONArray jsonArray = new JSONArray();
 		ImgConverter<File, String> converter = new ImageToBase64();
@@ -101,7 +101,7 @@ public class t_CommunityService {
 			jsonArray.add(community);
 		}
 
-		return jsonArray;
+		return list;
 	}
 	
 	// getComm

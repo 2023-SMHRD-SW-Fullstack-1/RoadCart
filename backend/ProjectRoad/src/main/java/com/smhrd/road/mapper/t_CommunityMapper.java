@@ -16,7 +16,7 @@ public interface t_CommunityMapper {
 	public List<t_community> communityList();
 	
 	// 나의 게시글 조회
-	public List<t_community> myCommunityList(t_community comm);
+	public List<t_community> myCommunityList(String user_id);
 	
 	// comm_idx조회
 	@Select ("select count(*) from t_community where comm_idx=#{comm_idx}")
