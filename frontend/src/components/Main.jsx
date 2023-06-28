@@ -36,8 +36,8 @@ const Main = ({posts,setPosts}) => {
                     {/* <ImageSlider id='ImageSlider' images={imgList} width={'100%'} objectFit={imgList} height={'700px'}
     showBullets={true} showNavs={true} autoPlay={false} />*/}
                 {/* </section> */}
-                <section style={{ backgroundColor: 'f6f6f6' }}>
-                    <MainGuide/>
+                <section style={{ backgroundColor: '#f6f6f6' }}>
+                    <MainGuide style={{backgroundColor:'black'}}/>
                 </section>
                 <div style={{ width: '100vw', paddingBottom: '40px', paddingTop: '20px' }}>
                     <div id='MonthContainer'>
@@ -49,9 +49,9 @@ const Main = ({posts,setPosts}) => {
                             <div className='TextOnImg' >
                                 <Link to={`/post/detail/102`}>
                                 <div className='BackgroundWrap'>
-                                    <div className='Content' >
-                                         <span style={{color:'white'}}>청도 프로방스 빛축제</span>
-                                         <p id='ContentP' style={{color:'white'}}>프로방스 마을로의 로맨틱한 여행과 빛축제를 즐길 수 있는 곳 </p>
+                                    <div className='Content' style={{color:"white"}}>
+                                        <span>DMZ OPEN 페스티벌</span>
+                                        <p id='ContentP'>한반도 DMZ에서 더 큰 평화를 여는 다양한 페스티벌을 개최</p>
                                     </div> 
                                 </div>
                                 </Link>

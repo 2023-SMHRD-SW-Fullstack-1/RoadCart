@@ -32,8 +32,6 @@ const MyplanModal = (props) => {
     
     axios.post("/spring/road/scheduledetail",item.sche_idx.toString(),{headers:{"Content-Type":"text/plain"}})
     .then((res)=>{
-      
-      console.log(res.data);
       let list = res.data;
       list.map((item,index)=>{
         list[index].poi_dt = item.poi_dt.replaceAll("-","");
@@ -43,7 +41,6 @@ const MyplanModal = (props) => {
           let img = [];
           let title = [];
           let content = [];
-          console.log(split.pop());
           split.forEach((element,index) => {
             if (index % 4 === 0) {
               link.push(element);
@@ -71,8 +68,6 @@ const MyplanModal = (props) => {
         }
         
       })
-      console.log(list);
-      // console.log(new Date(list[0].poi_dt));
       let map = {};
       list.forEach(item => {
         map[item.poi_dt] = {
@@ -81,12 +76,10 @@ const MyplanModal = (props) => {
         }
       });
       list.forEach(item => {
-        if (map[item.poi_dt].title === item.poi_dt) {
-          map[item.poi_dt].items.push(item);
-        }
+      map[item.poi_dt].title === item.poi_dt && map[item.poi_dt].items.push(item);
       });
       setColumns(map);
-      setState({
+      res.data && setState({
         center: {lat: res.data[0].lat,lng:res.data[0].lng},
         isPanto: true
       })

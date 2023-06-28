@@ -11,7 +11,8 @@ import axios from 'axios';
 
 function MyPost({ post, posts, onDeletePost, onEditPost, like,num,onLike,setPosts,setPost,
   setLike,likedPosts,likeCount,setLikeCount,setLikedPosts }) {
-  const id = "1111";
+  const userId = sessionStorage.getItem('user_id')
+  const id = userId;
   const [myPosts, setMyposts] = useState();
   const navigate = useNavigate();
   const [idx,setIdx] = useState()
@@ -63,14 +64,12 @@ function MyPost({ post, posts, onDeletePost, onEditPost, like,num,onLike,setPost
 
     .catch(error=>console.log("error",error))
   }
-  useEffect(()=>{
-    getDeletePost()
-  },[])
+
 
 
 //내가 작성한 게시물 가져오기
   const getMyPost = async()=>{
-    await axios.post(`spring/road/mypost`,config)
+    await axios.post(`spring/road/mypost`,userId,config)
   .then((res)=>{
     setMyposts(res.data);
      setPosts(res.data)})
@@ -81,7 +80,7 @@ function MyPost({ post, posts, onDeletePost, onEditPost, like,num,onLike,setPost
     getMyPost();
   },[])
   const handleLike = (post, index) => {
-    let user_id = id;
+    let user_id = userId;
 
     if (post.isLike) {
       axios.post("spring/road/community/removelikes", [user_id, post.comm_idx]);

@@ -84,7 +84,7 @@ const LoginPage = ({ isLoggendIn, setIsLoggendIn }) => {
                 <p className='LoginPageSubTitle' id='travelPlannertxt'>나만의 여행일정 플래너 - 길바구니</p>
             </div>
             <div className="LoginPageInputBox">
-                <input className="input" onChange={(e) => setInputId(e.target.value)} name='id' type="text" placeholder="아이디" />
+                <input style={{width:"350px"}} className="input" onChange={(e) => setInputId(e.target.value)} name='id' type="text" placeholder="아이디" />
                 <span className="border"></span>
             </div>
             <div className="LoginPageInputBox">
@@ -125,8 +125,8 @@ const LoginPage = ({ isLoggendIn, setIsLoggendIn }) => {
 
 
                 {/* 네이버 로그인 */}
-                <div className='btn-container'>
-                    <img onClick={LoginBtnN} src={naverLogo} width="50" /></div>
+                {/* <div className='btn-container'>
+                    <img onClick={LoginBtnN} src={naverLogo} width="50" /></div> */}
             </div>
         </div>
 

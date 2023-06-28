@@ -15,7 +15,7 @@ const Item = styled(Paper)(({ theme }) => ({
 
 
 const Myplan = () => {
-    const [scheduleList, setScheduleList] = useState();
+    const [scheduleList, setScheduleList] = useState([]);
     const sessionStorage = window.sessionStorage
     const user_id = sessionStorage.getItem("user_id");
     console.log(user_id);

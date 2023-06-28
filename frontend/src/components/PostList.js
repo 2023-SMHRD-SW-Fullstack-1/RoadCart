@@ -11,7 +11,8 @@ import axios from "axios";
 import "../../src/App.css";
 
 const PostList = ({ posts, setPosts, likeCount, likedPosts, setPost }) => {
-  const id = "1111";
+  const userId = sessionStorage.getItem('user_id')
+  const id = userId;
   const navigate = useNavigate();
   const [filteredPosts, setFilteredPosts] = useState([]); //검색된 게시물
   const [userInput, setUserInput] = useState(""); //사용자가 검색창에 입력한 값
@@ -27,7 +28,7 @@ const PostList = ({ posts, setPosts, likeCount, likedPosts, setPost }) => {
     let user_id = id;
 
     axios
-      .post(`/spring/road/post`, "1111", {
+      .post(`/spring/road/post`, userId, {
         headers: { "Content-Type": "text/plain" },
       })
       .then((res) => {
@@ -150,13 +151,14 @@ const PostList = ({ posts, setPosts, likeCount, likedPosts, setPost }) => {
                       {/* )} */}
                     </Link>
                     <br />
-                    <span style={{float:'left',marginLeft:'130px' }}>
-                    <Button
+                    <span style={{marginLeft:'150px' }}>
+                    <Button 
                         onClick={() => handleLike(filteredPosts, index)}
                         style={{
                           border: "none",
                           backgroundColor: "white",
                           width: "70px",
+                          paddingLeft:'100px'
                         }}
                       >
                         {filteredPosts.isLike ? (

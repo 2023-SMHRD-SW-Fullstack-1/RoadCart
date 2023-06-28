@@ -23,7 +23,7 @@ const MyPage = ({isLoggendIn}) => {
             <h1 id='nickname'>{user_nick}</h1>
             <div>
             <Link to='/myplan' style={{textDecoration:'none'}}><button className="MyPageBtn" role="button">나의 일정</button></Link>
-            <button className="MyPageBtn" role="button">내 글 보기</button>
+            <Link to='/mypost'  style={{textDecoration:'none'}}><button className="MyPageBtn" role="button">내 글 보기</button></Link>
             <Link to='/myprofile' style={{textDecoration:'none'}}><button className="MyPageBtn">회원정보수정</button></Link>
             </div>
         </div>

@@ -60,7 +60,6 @@ const ModifyPage = ({ isLoggendIn, setIsLoggendIn }) => {
         const requestData = {
             user_id: user_id,
             user_nick: userNick,
-            user_pw: userPw,
         };
         console.log('버튼 클릭했을 때:', requestData);
         axios.post(`spring/road/update`, requestData, config)

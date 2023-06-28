@@ -114,12 +114,12 @@ const JoinPage = ({ setIsLoggendIn }) => {
             </div>
             <div className="JoinInputBox">
                 <label htmlFor="id">아이디</label>
-                <input className="JoinInput" name='id' onChange={onchangeId} type="text" placeholder='4-12사이 대소문자 또는 숫자만'/>
+                <input style={{width:"350px"}} className="JoinInput" name='id' onChange={onchangeId} type="text" placeholder='4-12사이 대소문자 또는 숫자만'/>
                 <p className="JoinMessage"> {idMessage} </p>
             </div>
             <div className="JoinInputBox">
                 <label htmlFor="nick">닉네임</label>
-                <input className="JoinInput" name='id' onChange={onChangeNick} type="text" placeholder='2글자 이상 8글자 이하로 입력' />
+                <input style={{width:"350px"}} className="JoinInput" name='id' onChange={onChangeNick} type="text" placeholder='2글자 이상 8글자 이하로 입력' />
                 <p className="JoinMessage"> {nickMessage} </p>
             </div>
             <div className="JoinInputBox">

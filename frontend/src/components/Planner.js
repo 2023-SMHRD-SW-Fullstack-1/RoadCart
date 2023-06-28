@@ -158,7 +158,7 @@ function Planner() {
   }
 
   const plannerDate = (update)=>{ // 캘린더
-    if (update[1] !== null) {
+    if (update[1]) {
       console.log(update);
       let map = {};
       map.cart = columns.cart;
@@ -265,13 +265,12 @@ function Planner() {
     setReviewOpen(false);
   };
 
-  const save = (title, content)=>{ // 저장하기
+  const save = async(title, content)=>{ // 저장하기
     let list = [];
-    console.log(columns);
     Object.entries(columns).filter(item=>(item[0] !== "cart")).map(item=>item[1].items.map(e=>{
         console.log(e);
         let str = "";
-        if(e.poi_info !== undefined){
+        if(item.poi_info !== undefined){
             e.poi_info.forEach(element => {
                 str+=element.link +"@슬라이더@" + element.img + "@슬라이더@" + element.title + "@슬라이더@" + element.content + "@슬라이더@";
                 });
@@ -289,7 +288,7 @@ function Planner() {
       t_poi : list
     }
     console.log("송출값",data);
-    axios.post('/spring/road/schedule/register',data);
+    await axios.post('/spring/road/schedule/register',data);
     navigate("/myplan");
   }
 
@@ -396,14 +395,14 @@ function Planner() {
                 <div ref={roadDisplayed} style={{display:"none", height: "100vh", width: "15vw", borderRight: "solid 1px black"}}>
                   <Droppable key="cart" droppableId="cart">
                     {(provided) => (
-                      <ul onClick={()=>{setMarkers(columns.cart.items);setDateStatus("cart");setLineOpacity(false);}}
+                      <ul style={{flexDirection:"row"}} onClick={()=>{setMarkers(columns.cart.items);setDateStatus("cart");setLineOpacity(false);}}
                         className="cart"
                         {...provided.droppableProps}
                         ref={provided.innerRef}
                       ><br></br>
                         <span>길바구니</span>
                         {columns.cart.items.map((item, index) => (
-                          <Draggable key={item.lat} draggableId={item.lat} index={index}>
+                          <Draggable key={item.poi_name} draggableId={item.poi_name} index={index}>
                             {(provided) => (
                               <li style={{flexDirection:"row", textAlign:"center"}}
                               onClick={()=>{setInfo(item)}}
@@ -411,7 +410,7 @@ function Planner() {
                               {...provided.dragHandleProps}
                               {...provided.draggableProps}
                               >
-                                {item.poi_name}<DeleteForeverIcon style={{float:"right", justifyItems:"end"}} onClick={()=>{removeCart(index)}}/>
+                                <div>{item.poi_name}<DeleteForeverIcon style={{float:"right", justifyItems:"end"}} onClick={()=>{removeCart(index)}}/></div>
                               </li>
                             )}
                           </Draggable>

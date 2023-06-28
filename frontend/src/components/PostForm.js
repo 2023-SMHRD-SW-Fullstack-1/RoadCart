@@ -16,6 +16,7 @@ function PostForm({onAddPost,setPosts,posts,post}) {
   const navigate = useNavigate();
   const [alignment, setAlignment] = useState()
 
+  const userId = sessionStorage.getItem('user_id')
  
   //이미지 업로드 및 미리보기
   const handleImageUpload = (event) => {
@@ -28,6 +29,7 @@ function PostForm({onAddPost,setPosts,posts,post}) {
   // 게시물 작성
   const handleSubmit = (event) => {
    event.preventDefault();
+  
     console.log("작성");
     // 게시물 작성 로직 작성
       if (true) {
@@ -45,7 +47,7 @@ function PostForm({onAddPost,setPosts,posts,post}) {
       const data={
           comm_title: title,
           comm_content: content,
-          user_id: "1111",
+          user_id: userId,
           sche_idx: location.state.item.sche_idx
       }
       const formData = new FormData()
@@ -67,6 +69,10 @@ function PostForm({onAddPost,setPosts,posts,post}) {
         .catch(error=>console.log("error",error))
   };
   }
+
+  useEffect(()=>{
+    console.log(location);
+  },[])
 
   return (
     <div className='postFormContainer' style={{marginLeft:'250px',textAlign:'center',display:"flex", flexDirection:"row", alignItems: "center", }}>
