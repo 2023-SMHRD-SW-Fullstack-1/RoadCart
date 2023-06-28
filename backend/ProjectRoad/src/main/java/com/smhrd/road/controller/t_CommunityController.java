@@ -34,6 +34,7 @@ import com.smhrd.road.service.t_CommunityService;
 
 @Controller
 @CrossOrigin("http://localhost:3000")
+//@CrossOrigin("http://172.30.1.28:3000")
 public class t_CommunityController {
 
 	@Autowired
@@ -51,9 +52,9 @@ public class t_CommunityController {
 	
 	//나의 게시글 조회
 	@PostMapping(value="/mypost")
-	public @ResponseBody JSONArray myCommunityList(t_community comm) {
-		JSONArray array = communityService.myCommunityList(comm);
-		return array;
+	public @ResponseBody List<t_community> myCommunityList(@RequestBody String user_id) {
+		return communityService.myCommunityList(user_id);
+		
 		
 	}
 

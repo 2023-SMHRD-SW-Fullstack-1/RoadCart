@@ -19,7 +19,9 @@ import com.smhrd.road.domain.t_comment;
 import com.smhrd.road.service.t_CommentService;
 
 @RestController
+
 @CrossOrigin("http://localhost:3000")
+//@CrossOrigin("http://172.30.1.28:3000")
 public class t_CommentController {
 
 	@Autowired
