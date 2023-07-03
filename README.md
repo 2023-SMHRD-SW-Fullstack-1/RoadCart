@@ -40,16 +40,17 @@
     <tr>
         <td>라이브러리</td>
         <td>
-            <img src="https://img.shields.io/badge/BootStrap-7952B3?style=for-the-badge&logo=BootStrap&logoColor=white"/>
+            <img src="https://img.shields.io/badge/MUI-%230081CB.svg?style=for-the-badge&logo=mui&logoColor=white" >
+            <img src="https://img.shields.io/badge/styled--components-DB7093?style=for-the-badge&logo=styled-components&logoColor=white" >
             <img src="https://img.shields.io/badge/KakaoMap-FFCD00?style=for-the-badge&logo=Kakao&logoColor=white"/>
+            <img src="https://img.shields.io/badge/React_Router-CA4245?style=for-the-badge&logo=react-router&logoColor=white">
+            <img src="https://img.shields.io/badge/Axios-007CE2?style=for-the-badge&logo=axios&logoColor=white" >
         </td>
     </tr>
     <tr>
         <td>개발도구</td>
         <td>
             <img src="https://img.shields.io/badge/Eclipse-2C2255?style=for-the-badge&logo=Eclipse&logoColor=white"/>
-            <img src="https://img.shields.io/badge/RaskpberryPi-A22846?style=for-the-badge&logo=RaskpberryPi&logoColor=white"/>
-            <img src="https://img.shields.io/badge/Arduino-00979D?style=for-the-badge&logo=Arduino&logoColor=white"/>
             <img src="https://img.shields.io/badge/VSCode-007ACC?style=for-the-badge&logo=VisualStudioCode&logoColor=white"/>
         </td>
     </tr>
@@ -62,8 +63,7 @@
     <tr>
         <td>데이터베이스</td>
         <td>
-            <img src="https://img.shields.io/badge/Firebase-FFCA28?style=for-the-badge&logo=Firebase&logoColor=white"/>
-            <img src="https://img.shields.io/badge/Oracle 11g-F80000?style=for-the-badge&logo=Oracle&logoColor=white"/>
+            <img src="https://img.shields.io/badge/MySQL-4479A1?style=for-the-badge&logo=MySQL&logoColor=white"/> 
         </td>
     </tr>
     <tr>
@@ -73,13 +73,15 @@
             <img src="https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=GitHub&logoColor=white"/>
         </td>
     </tr>
+
 </table>
 
 
 <br>
 
 ## ⚙ 시스템 아키텍처(구조) 예시 
-![서비스 아키텍처](https://user-images.githubusercontent.com/25995055/169925538-15867bd9-aa0b-42fc-a39b-88981e926e51.png)
+![image](https://github.com/2023-SMHRD-SW-Fullstack-1/RoadCart/assets/85126711/51c06360-ee8f-41d5-8bc3-bb174b6fb795)
+
 <br>
 
 ## 📌 SW유스케이스
@@ -87,11 +89,11 @@
 <br>
 
 ## 📌 서비스 흐름도
-![image](https://user-images.githubusercontent.com/25995055/178401048-d6484bda-a2d7-40e1-998b-2bd195cd9f89.png)
+![Picture (2)](https://github.com/2023-SMHRD-SW-Fullstack-1/RoadCart/assets/85126711/c99c57f1-6798-4ddc-b87c-8af03ba03664)
 <br>
 
 ## 📌 ER다이어그램
-![image](https://user-images.githubusercontent.com/25995055/169925318-102784c2-893f-4fd7-bec9-a54c44b669d4.png)
+![image](https://github.com/2023-SMHRD-SW-Fullstack-1/RoadCart/assets/85126711/3150638d-4c67-432d-ab03-ccbd61d16810)
 <br>
 
 ## 🖥 화면 구성
@@ -118,25 +120,50 @@
     <td align="center"><img src="https://pbs.twimg.com/media/B-n6uPYUUAAZSUx.png" width="100" height="100"/></td>
   </tr>
   <tr>
-    <td align="center"><strong>홍O동</strong></td>
-    <td align="center"><strong>홍O동</strong></td>
-    <td align="center"><strong>홍O동</strong></td>
-    <td align="center"><strong>홍O동</strong></td>
-    <td align="center"><strong>홍O동</strong></td>
+    <td align="center">
+        <strong>황정용</strong>
+        <ul>
+            <li>카카오 지도API</li>
+            <li>이미지, 리뷰 크롤링</li>
+            <li>드래그 앤 드롭</li>
+            <li>일정관리기능 구현</li>
+        </ul>
+    </td>
+    <td align="center">
+        <strong>홍재성</strong>
+        <ul>
+            <li>MySQL DB 구축 및 설계</li>
+            <li>회원정보관리 구현</li>
+        </ul>
+    </td>
+    <td align="center">
+        <strong>이유영</strong>
+        <ul>
+            <li>게시글 작성/수정/삭제</li>
+            <li>댓글 작성/수정/삭제</li>
+            <li>좋아요 기능</li>
+        </ul>
+    </td>
+    <td align="center">
+        <strong>손지연</strong>
+        <ul>
+            <li>SNS회원가입/로그인(카카오, 구글)</li>
+            <li>메인페이지, 마이페이지 등 디자인</li>
+            <li>회원정보관리</li>
+        </ul>
+    </td>
   </tr>
   <tr>
     <td align="center"><b>Frontend</b></td>
+    <td align="center"><b>Backend</b></td>
     <td align="center"><b>Frontend</b></td>
-    <td align="center"><b>Backend</b></td>
-    <td align="center"><b>Backend</b></td>
-    <td align="center"><b>Deep Learning</b></td>
+    <td align="center"><b>Frontend</b></td>
   </tr>
   <tr>
-    <td align="center"><a href="https://github.com/자신의username작성해주세요" target='_blank'>github</a></td>
-    <td align="center"><a href="https://github.com/자신의username작성해주세요" target='_blank'>github</a></td>
-    <td align="center"><a href="https://github.com/자신의username작성해주세요" target='_blank'>github</a></td>
-    <td align="center"><a href="https://github.com/자신의username작성해주세요" target='_blank'>github</a></td>
-    <td align="center"><a href="https://github.com/자신의username작성해주세요" target='_blank'>github</a></td>
+    <td align="center"><a href="https://github.com/HwangJeongyong" target='_blank'>github</a></td>
+    <td align="center"><a href="https://github.com/JaeSeongHong" target='_blank'>github</a></td>
+    <td align="center"><a href="https://github.com/29074I" target='_blank'>github</a></td>
+    <td align="center"><a href="https://github.com/dbdud" target='_blank'>github</a></td>
   </tr>
 </table>
 
