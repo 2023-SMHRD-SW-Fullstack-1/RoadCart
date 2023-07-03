@@ -89,7 +89,7 @@
 <br>
 
 ## 📌 서비스 흐름도
-![Picture (2)](https://github.com/2023-SMHRD-SW-Fullstack-1/RoadCart/assets/85126711/c99c57f1-6798-4ddc-b87c-8af03ba03664)
+![image](https://github.com/2023-SMHRD-SW-Fullstack-1/RoadCart/assets/85126711/5a93517d-814f-4044-8215-269dfb242491)
 <br>
 
 ## 📌 ER다이어그램
@@ -98,8 +98,8 @@
 
 ## 🖥 화면 구성
 
-### 로그인/회원가입/회원괸리/회원수정/회원탈퇴
-![image](https://user-images.githubusercontent.com/25995055/178401098-95f15a0e-a2de-415e-83d5-883bb4cb0656.png)
+### 로그인/회원가입/회원관리/회원수정/회원탈퇴
+![회원관리](https://github.com/2023-SMHRD-SW-Fullstack-1/RoadCart/assets/85126711/debfcd06-70f9-431e-addf-7bd3dba2f5ee)
 <br>
 
 ### 옷 정보/코디 추천(날씨, 팁, 오늘의 코디, 참고할 수 있는 코디)
@@ -117,7 +117,6 @@
     <td align="center"><img src="https://mb.ntdtv.kr/assets/uploads/2019/01/Screen-Shot-2019-01-08-at-4.31.55-PM-e1546932545978.png" width="100" height="100"/></td>
     <td align="center"><img src="https://mblogthumb-phinf.pstatic.net/20160127_177/krazymouse_1453865104404DjQIi_PNG/%C4%AB%C4%AB%BF%C0%C7%C1%B7%BB%C1%EE_%B6%F3%C0%CC%BE%F0.png?type=w2" width="100" height="100"/></td>
     <td align="center"><img src="https://i.pinimg.com/236x/ed/bb/53/edbb53d4f6dd710431c1140551404af9.jpg" width="100" height="100"/></td>
-    <td align="center"><img src="https://pbs.twimg.com/media/B-n6uPYUUAAZSUx.png" width="100" height="100"/></td>
   </tr>
   <tr>
     <td align="center">
@@ -168,11 +167,15 @@
 </table>
 
 ## 🤾‍♂️ 트러블슈팅
-개념: 문제 해결을 위해 문제의 원인을 논리적이고 체계적으로 찾는 일이며 제품이나 프로세스의 운영을 재개
-프로젝트 진행하는 동안 발생했던 이슈 중 가장 기억에 남았던 문제와 해결 프로세스 나열(2~5가지 정도)
   
 * 문제1<br>
- 문제점 설명 및 해결방안
+하나의 게시글에 좋아요를 클릭하면 모든 게시글의 좋아요 상태가 변경<br>
+-> 좋아요 유무를 담을 리스트를 생성하여 게시글마다 좋아요 상태를 따로 관리
  
 * 문제2<br>
- 문제점 설명 및 해결방안
+axios로 크롤링을 하면 정적페이지의 코드만 스크랩함<br>
+-> node.js 라이브러리인 puppeteer를 사용하여 동적페이지를 크롤링
+
+* 문제3<br>
+크롤링 요청마다 매번 처리하여 필요이상의 프로세스 할당<br>
+-> 요청을 한번에 묶어 한 프로세스로 요청
