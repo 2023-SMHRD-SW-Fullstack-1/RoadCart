@@ -102,21 +102,24 @@
 ![회원관리](https://github.com/2023-SMHRD-SW-Fullstack-1/RoadCart/assets/85126711/debfcd06-70f9-431e-addf-7bd3dba2f5ee)
 <br>
 
-### 옷 정보/코디 추천(날씨, 팁, 오늘의 코디, 참고할 수 있는 코디)
-![image](https://user-images.githubusercontent.com/25995055/178401127-287e6de2-4396-49fc-a107-59c4d5cd55c7.png)
+### 여행지 검색 / 일정관리 (지도검색, 여행지 추가, 캘린더, 일정추가)
+![1](https://github.com/2023-SMHRD-SW-Fullstack-1/RoadCart/assets/85126711/801d3d4d-534f-4796-8533-08b8bd7b2ec7)
+<br>
+![2](https://github.com/2023-SMHRD-SW-Fullstack-1/RoadCart/assets/85126711/9c3c584c-0c1e-4e88-a007-2a29aaf85a34)
 <br>
 
-### 일정/고객센터
-![image](https://user-images.githubusercontent.com/25995055/178401150-861f0e93-0f40-4fae-98c1-2099bf513c8d.png)
+### 게시글(작성/삭제), 댓글(작성/삭제), 좋아요
+![3](https://github.com/2023-SMHRD-SW-Fullstack-1/RoadCart/assets/85126711/bb823919-23b1-413a-949b-79ccf019ddee)
+
 <br>
 
 ## 👨‍👩‍👦‍👦 팀원 역할
 <table>
   <tr>
-    <td align="center"><img src="https://item.kakaocdn.net/do/fd49574de6581aa2a91d82ff6adb6c0115b3f4e3c2033bfd702a321ec6eda72c" width="100" height="100"/></td>
-    <td align="center"><img src="https://mb.ntdtv.kr/assets/uploads/2019/01/Screen-Shot-2019-01-08-at-4.31.55-PM-e1546932545978.png" width="100" height="100"/></td>
-    <td align="center"><img src="https://mblogthumb-phinf.pstatic.net/20160127_177/krazymouse_1453865104404DjQIi_PNG/%C4%AB%C4%AB%BF%C0%C7%C1%B7%BB%C1%EE_%B6%F3%C0%CC%BE%F0.png?type=w2" width="100" height="100"/></td>
-    <td align="center"><img src="https://i.pinimg.com/236x/ed/bb/53/edbb53d4f6dd710431c1140551404af9.jpg" width="100" height="100"/></td>
+    <td align="center"><img src="https://avatars.githubusercontent.com/u/85126711?s=64&v=4" width="100" height="100"/></td>
+    <td align="center"><img src="https://avatars.githubusercontent.com/u/130349586?s=64&v=4" width="100" height="100"/></td>
+    <td align="center"><img src="https://avatars.githubusercontent.com/u/130349587?s=64&v=4" width="100" height="100"/></td>
+    <td align="center"><img src="https://avatars.githubusercontent.com/u/114223221?s=64&v=4" width="100" height="100"/></td>
   </tr>
   <tr>
     <td align="center">
