@@ -85,7 +85,7 @@
 <br>
 
 ## 📌 SW유스케이스
-![image](https://user-images.githubusercontent.com/25995055/178401023-9a015e66-aa6e-4d74-8564-9b1f9d306649.png)
+![유스케이스 drawio](https://github.com/2023-SMHRD-SW-Fullstack-1/RoadCart/assets/85126711/0291ff0f-145a-45db-9057-dbec8ae204bf)
 <br>
 
 ## 📌 서비스 흐름도
